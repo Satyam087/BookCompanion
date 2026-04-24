@@ -24,7 +24,7 @@
 .book-card__cover-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 3 / 4;
   background-color: var(--bg-section);
   overflow: hidden;
 }
@@ -79,7 +79,7 @@
 }
 
 .book-card__body {
-  padding: var(--space-md) var(--space-md) var(--space-lg);
+  padding: var(--space-sm) var(--space-md) var(--space-md);
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -128,7 +128,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-  margin-top: var(--space-md);
+  margin-top: var(--space-sm);
 }
 
 .book-card__tags .tag {
