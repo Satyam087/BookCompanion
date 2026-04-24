@@ -99,7 +99,7 @@ export default function TopicResults({ topic }) {
               <LeafOrnament 
                 size="tiny" 
                 rotation={15} 
-                style={{ position: 'absolute', top: -10, right: -10 }} 
+                style={{ position: 'absolute', top: -20, right: -30 }} 
               />
               <div className="topic-results__summary-info">
                 <span className="topic-results__summary-label">Learning Path For</span>
@@ -135,7 +135,7 @@ export default function TopicResults({ topic }) {
               <LeafOrnament 
                 size="small" 
                 rotation={-30} 
-                style={{ position: 'absolute', top: -20, left: -40 }} 
+                style={{ position: 'absolute', top: -35, left: -60 }} 
               />
               <span className="topic-results__rail-label">Path:</span>
               <button onClick={() => document.getElementById('level-beginner')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="topic-results__rail-link">1. Beginner</button>

@@ -9,18 +9,18 @@
 }
 
 .home__leaf-hero {
-  top: 10%;
-  right: -5%;
+  top: 5%;
+  right: -10%;
 }
 
 .home__leaf-chips {
-  top: -10px;
-  right: 10px;
+  top: -40px;
+  right: -50px;
 }
 
 .home__leaf-recent {
-  bottom: 0;
-  right: 0;
+  bottom: -20px;
+  right: -30px;
 }
 
 .home__hero-content {

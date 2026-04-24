@@ -51,7 +51,7 @@ export default function ReadingJourney() {
         <LeafOrnament 
           size="tiny" 
           rotation={-25} 
-          style={{ position: 'absolute', top: 10, right: 10 }} 
+          style={{ position: 'absolute', top: -15, right: -30 }} 
         />
         <h1 className="reading-journey__title">My Reading Journey</h1>
         <p className="reading-journey__subtitle">
@@ -131,7 +131,7 @@ export default function ReadingJourney() {
             <LeafOrnament 
               size="small" 
               rotation={35} 
-              style={{ position: 'absolute', top: '20%', left: '10%' }} 
+              style={{ position: 'absolute', top: '10%', left: '-5%' }} 
             />
             <EmptyState
               heading="No saved books yet"

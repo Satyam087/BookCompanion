@@ -152,7 +152,7 @@ export default function BookDetails({ workId }) {
             <LeafOrnament 
               size="medium" 
               rotation={45} 
-              style={{ position: 'absolute', top: 50, right: 0 }} 
+              style={{ position: 'absolute', top: -40, right: -60 }} 
             />
             <span className={`level-badge level-badge--${book.level}`}>
               {book.level}

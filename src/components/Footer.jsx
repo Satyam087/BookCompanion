@@ -8,7 +8,7 @@ export default function Footer() {
         <LeafOrnament 
           size="tiny" 
           rotation={-15} 
-          style={{ position: 'absolute', top: -10, left: 10 }} 
+          style={{ position: 'absolute', top: -25, left: -25 }} 
         />
         <div className="footer__brand">
           <span className="footer__icon" aria-hidden="true">
