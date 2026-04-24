@@ -5,7 +5,9 @@ export default function LeafOrnament({
   className = '', 
   size = 'medium', 
   opacity = 0.85, 
-  rotation = 0 
+  rotation = 0,
+  style = {},
+  ...props
 }) {
   
   const sizeMap = {
@@ -27,9 +29,11 @@ export default function LeafOrnament({
       style={{ 
         opacity, 
         transform: `rotate(${rotation}deg)`,
-        objectFit: 'contain'
+        objectFit: 'contain',
+        ...style
       }}
       aria-hidden="true"
+      {...props}
     />
   );
 }
