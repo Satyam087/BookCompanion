@@ -116,7 +116,7 @@ export default function BookDetails({ workId }) {
     return (
       <div className="page" id="book-details-page">
         <div className="container">
-          <button className="btn btn-ghost" onClick={() => window.history.back()}>
+          <button className="btn btn-ghost" onClick={() => window.history.length > 2 ? window.history.back() : navigate('/')}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
             Back
           </button>
@@ -133,7 +133,7 @@ export default function BookDetails({ workId }) {
   return (
     <div className="page book-details" id="book-details-page">
       <div className="container">
-        <button className="btn btn-ghost" onClick={() => window.history.back()}>
+        <button className="btn btn-ghost" onClick={() => window.history.length > 2 ? window.history.back() : navigate('/')}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
           Back
         </button>
@@ -148,11 +148,11 @@ export default function BookDetails({ workId }) {
             />
           </div>
 
-          <div className="book-details__info-col" style={{ position: 'relative', zIndex: 0 }}>
+          <div className="book-details__info-col book-details__info-col-wrap">
             <LeafOrnament 
               size="medium" 
               rotation={45} 
-              style={{ position: 'absolute', top: 20, right: -80 }} 
+              className="book-details__leaf-info" 
             />
             <span className={`level-badge level-badge--${book.level}`}>
               {book.level}

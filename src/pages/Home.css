@@ -270,6 +270,17 @@
   background-color: var(--accent-forest);
 }
 
+.home__divider-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.home__leaf-divider {
+  /* tiny size and 90deg rotation are handled by props usually, 
+     but we can set additional positioning here if needed */
+}
+
 /* === Responsive === */
 @media (max-width: 992px) {
   .home__hero {

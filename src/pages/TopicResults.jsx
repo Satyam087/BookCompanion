@@ -29,15 +29,14 @@ export default function TopicResults({ topic }) {
         if (results.length > 0) {
           addRecentSearch(decodedTopic);
         }
-        // Defer grouping to next frame so the summary shell paints first
+        // Defer grouping and loading state completion to next frame
         requestAnimationFrame(() => {
           setGrouped(groupBooksByLevel(results));
+          setLoading(false);
         });
       })
       .catch((err) => {
         setError(err.message || 'Failed to search books.');
-      })
-      .finally(() => {
         setLoading(false);
       });
   }, [decodedTopic]);
@@ -95,11 +94,11 @@ export default function TopicResults({ topic }) {
 
         {!loading && !error && grouped && (
           <>
-            <div className="topic-results__summary-panel" style={{ position: 'relative', zIndex: 0 }}>
+            <div className="topic-results__summary-panel topic-results__summary-panel-wrap">
               <LeafOrnament 
                 size="tiny" 
                 rotation={15} 
-                style={{ position: 'absolute', top: -35, right: -40 }} 
+                className="topic-results__leaf-summary" 
               />
               <div className="topic-results__summary-info">
                 <span className="topic-results__summary-label">Learning Path For</span>
@@ -131,11 +130,11 @@ export default function TopicResults({ topic }) {
               )}
             </div>
 
-            <div className="topic-results__nav-rail" style={{ position: 'relative', zIndex: 0 }}>
+            <div className="topic-results__nav-rail topic-results__nav-rail-wrap">
               <LeafOrnament 
                 size="small" 
                 rotation={-30} 
-                style={{ position: 'absolute', top: -50, right: 10 }} 
+                className="topic-results__leaf-rail" 
               />
               <span className="topic-results__rail-label">Path:</span>
               <button onClick={() => document.getElementById('level-beginner')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="topic-results__rail-link">1. Beginner</button>

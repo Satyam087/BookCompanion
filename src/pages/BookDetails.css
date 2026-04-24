@@ -144,6 +144,17 @@
   width: 100%;
 }
 
+.book-details__info-col-wrap {
+  position: relative;
+  z-index: 0;
+}
+
+.book-details__leaf-info {
+  position: absolute;
+  top: 20px;
+  right: -80px;
+}
+
 @media (max-width: 768px) {
   .book-details__main {
     flex-direction: column;

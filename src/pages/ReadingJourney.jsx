@@ -47,11 +47,11 @@ export default function ReadingJourney() {
 
   return (
     <div className="page reading-journey" id="reading-journey-page">
-      <div className="container" style={{ position: 'relative', zIndex: 0 }}>
+      <div className="container reading-journey__container-wrap">
         <LeafOrnament 
           size="tiny" 
           rotation={-25} 
-          style={{ position: 'absolute', top: -15, right: -30 }} 
+          className="reading-journey__leaf-title" 
         />
         <h1 className="reading-journey__title">My Reading Journey</h1>
         <p className="reading-journey__subtitle">

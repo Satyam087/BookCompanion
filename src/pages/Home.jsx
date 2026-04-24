@@ -71,8 +71,8 @@ export default function Home() {
           </div>
         </section>
 
-        <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
-          <LeafOrnament size="tiny" rotation={90} />
+        <div className="home__divider-wrap">
+          <LeafOrnament size="tiny" rotation={90} className="home__leaf-divider" />
         </div>
 
         {/* Product Steps */}
