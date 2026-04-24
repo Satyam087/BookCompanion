@@ -184,6 +184,7 @@
 @media (max-width: 992px) {
   .topic-results__summary-panel {
     grid-template-columns: 1fr;
+    gap: var(--space-md);
   }
 }
 
@@ -205,5 +206,6 @@
   .topic-results__nav-rail {
     flex-wrap: wrap;
     border-radius: var(--radius-md);
+    position: static;
   }
 }

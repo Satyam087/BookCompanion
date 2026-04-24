@@ -4,3 +4,9 @@
   z-index: -1;
   user-select: none;
 }
+
+@media (max-width: 768px) {
+  .leaf-ornament {
+    display: none !important;
+  }
+}
