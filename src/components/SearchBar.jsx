@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { navigate, cleanTopic } from '../utils/helpers';
+import { navigate } from '../utils/helpers';
 import './SearchBar.css';
 
 export default function SearchBar({ initialValue = '', size = 'normal' }) {

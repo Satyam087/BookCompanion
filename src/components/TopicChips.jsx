@@ -21,7 +21,6 @@ export default function TopicChips() {
 
   return (
     <div className="topic-chips" id="topic-chips">
-      <p className="topic-chips__label">Popular topics</p>
       <div className="topic-chips__list">
         {SUGGESTED_TOPICS.map((topic) => (
           <button

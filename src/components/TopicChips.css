@@ -1,40 +1,30 @@
 .topic-chips {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-md);
-}
-
-.topic-chips__label {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  gap: var(--space-sm);
 }
 
 .topic-chips__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-sm);
-  max-width: 600px;
+  gap: 6px;
 }
 
 .topic-chip {
-  padding: 6px 16px;
-  border-radius: 100px;
-  font-size: 0.875rem;
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
   font-weight: 500;
   color: var(--text-secondary);
   background-color: var(--bg-paper);
   border: 1px solid var(--border);
+  border-bottom: 2px solid var(--border-dark);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .topic-chip:hover {
   color: var(--accent-forest);
-  border-color: var(--accent-forest);
+  border-bottom-color: var(--accent-forest);
   background-color: var(--accent-forest-bg);
 }
