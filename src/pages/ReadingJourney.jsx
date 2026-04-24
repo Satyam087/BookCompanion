@@ -1,7 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import { getSavedBooks, updateBookStatus, updateBookNotes, removeBook } from '../utils/storage';
-import { formatAuthors, formatYear, getPlaceholderCover, navigate, getWorkIdFromKey, truncateText } from '../utils/helpers';
-import StatusBadge from '../components/StatusBadge';
+import { formatAuthors, getPlaceholderCover, navigate, getWorkIdFromKey, truncateText } from '../utils/helpers';
 import EmptyState from '../components/EmptyState';
 import './ReadingJourney.css';
 
@@ -13,26 +12,18 @@ const TABS = [
 ];
 
 export default function ReadingJourney() {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState(getSavedBooks);
   const [activeTab, setActiveTab] = useState('all');
   const [expandedNotes, setExpandedNotes] = useState(null);
 
-  const loadBooks = useCallback(() => {
-    setBooks(getSavedBooks());
-  }, []);
-
-  useEffect(() => {
-    loadBooks();
-  }, [loadBooks]);
-
   const handleStatusChange = (bookId, newStatus) => {
     updateBookStatus(bookId, newStatus);
-    loadBooks();
+    setBooks(getSavedBooks());
   };
 
   const handleRemove = (bookId) => {
     removeBook(bookId);
-    loadBooks();
+    setBooks(getSavedBooks());
   };
 
   const handleNotesChange = (bookId, notes) => {
@@ -50,32 +41,62 @@ export default function ReadingJourney() {
     completed: books.filter(b => b.status === 'completed').length,
   };
 
+  const currentlyReading = books.find(b => b.status === 'reading');
+
   return (
     <div className="page reading-journey" id="reading-journey-page">
       <div className="container">
         <h1 className="reading-journey__title">My Reading Journey</h1>
         <p className="reading-journey__subtitle">
-          Your saved books and reading progress, all in one place.
+          {books.length > 0
+            ? `You have ${stats.total} book${stats.total !== 1 ? 's' : ''} saved. ${stats.reading > 0 ? `${stats.reading} in progress.` : ''}`
+            : 'Your saved books and reading progress, all in one place.'
+          }
         </p>
 
-        {/* Stats */}
+        {/* Stats Strip */}
         {books.length > 0 && (
-          <div className="reading-journey__stats" id="reading-stats">
-            <div className="stat-card">
-              <span className="stat-card__num">{stats.total}</span>
-              <span className="stat-card__label">Saved</span>
-            </div>
-            <div className="stat-card stat-card--blue">
-              <span className="stat-card__num">{stats.toRead}</span>
-              <span className="stat-card__label">To Read</span>
-            </div>
-            <div className="stat-card stat-card--forest">
-              <span className="stat-card__num">{stats.reading}</span>
-              <span className="stat-card__label">Reading</span>
-            </div>
-            <div className="stat-card stat-card--rust">
-              <span className="stat-card__num">{stats.completed}</span>
-              <span className="stat-card__label">Completed</span>
+          <div className="reading-journey__stats-strip" id="reading-stats">
+            <span className="reading-journey__stat">
+              <strong>{stats.total}</strong> saved
+            </span>
+            <span className="reading-journey__stat-sep"></span>
+            <span className="reading-journey__stat reading-journey__stat--blue">
+              <strong>{stats.toRead}</strong> to read
+            </span>
+            <span className="reading-journey__stat-sep"></span>
+            <span className="reading-journey__stat reading-journey__stat--forest">
+              <strong>{stats.reading}</strong> reading
+            </span>
+            <span className="reading-journey__stat-sep"></span>
+            <span className="reading-journey__stat reading-journey__stat--rust">
+              <strong>{stats.completed}</strong> completed
+            </span>
+          </div>
+        )}
+
+        {/* Continue Reading Featured Panel */}
+        {currentlyReading && (
+          <div className="reading-journey__continue" id="continue-reading">
+            <span className="reading-journey__continue-label">Continue reading</span>
+            <div
+              className="reading-journey__continue-card"
+              onClick={() => navigate(`/book/${getWorkIdFromKey(currentlyReading.id)}`)}
+            >
+              <img
+                className="reading-journey__continue-cover"
+                src={currentlyReading.coverUrl || getPlaceholderCover()}
+                alt={currentlyReading.title}
+              />
+              <div className="reading-journey__continue-info">
+                <h3 className="reading-journey__continue-title">{currentlyReading.title}</h3>
+                <p className="reading-journey__continue-author">{formatAuthors(currentlyReading.authors)}</p>
+                {currentlyReading.notes && (
+                  <p className="reading-journey__continue-note">
+                    {truncateText(currentlyReading.notes, 100)}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         )}
@@ -145,6 +166,12 @@ function JourneyCard({ book, onStatusChange, onRemove, onNotesChange, isNotesExp
     onNotesChange(book.id, notes);
   };
 
+  const getProgress = (status) => {
+    if (status === 'completed') return 100;
+    if (status === 'reading') return 50;
+    return 0;
+  };
+
   return (
     <article className="journey-card card" id={`journey-card-${workId}`}>
       <div className="journey-card__cover-wrap" onClick={() => navigate(`/book/${workId}`)}>
@@ -155,6 +182,12 @@ function JourneyCard({ book, onStatusChange, onRemove, onNotesChange, isNotesExp
           onError={() => setImgError(true)}
           loading="lazy"
         />
+        <div className="journey-card__progress-strip">
+          <div
+            className={`journey-card__progress-fill journey-card__progress-fill--${book.status}`}
+            style={{ width: `${getProgress(book.status)}%` }}
+          />
+        </div>
       </div>
 
       <div className="journey-card__body">
@@ -167,20 +200,19 @@ function JourneyCard({ book, onStatusChange, onRemove, onNotesChange, isNotesExp
               {truncateText(book.title, 70)}
             </h3>
             <p className="journey-card__author">{formatAuthors(book.authors)}</p>
-            <p className="journey-card__year">{formatYear(book.publishYear)}</p>
-          </div>
-
-          <div className="journey-card__badges">
-            <StatusBadge status={book.status} />
-            <span className={`level-badge level-badge--${book.level || 'intermediate'}`}>
-              {book.level || 'intermediate'}
-            </span>
           </div>
         </div>
 
+        {/* Note preview (first line, always visible if notes exist) */}
+        {book.notes && !isNotesExpanded && (
+          <p className="journey-card__note-preview" onClick={onToggleNotes}>
+            {truncateText(book.notes, 60)}
+          </p>
+        )}
+
         <div className="journey-card__actions">
           <select
-            className="select"
+            className="select journey-card__status-select"
             value={book.status}
             onChange={(e) => onStatusChange(book.id, e.target.value)}
             aria-label={`Update status for ${book.title}`}
@@ -191,29 +223,31 @@ function JourneyCard({ book, onStatusChange, onRemove, onNotesChange, isNotesExp
           </select>
 
           <button
-            className="btn btn-sm btn-ghost"
+            className={`btn btn-sm btn-ghost journey-card__notes-btn ${isNotesExpanded || notes ? 'has-notes' : ''}`}
             onClick={onToggleNotes}
           >
-            {isNotesExpanded ? 'Hide notes' : 'Notes'}
+            {isNotesExpanded ? 'Close' : (notes ? 'Edit notes' : 'Add notes')}
           </button>
 
           <button
-            className="btn btn-sm btn-danger"
+            className="btn btn-sm btn-ghost journey-card__remove-btn"
             onClick={() => onRemove(book.id)}
             aria-label={`Remove ${book.title}`}
+            title="Remove from journey"
           >
-            Remove
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
           </button>
         </div>
 
         {isNotesExpanded && (
-          <div className="journey-card__notes">
+          <div className="journey-card__notes-wrap">
+            <div className="journey-card__notebook-rings"></div>
             <textarea
-              className="textarea"
+              className="journey-card__notebook-textarea"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               onBlur={handleNotesBlur}
-              placeholder="Write your notes about this book..."
+              placeholder="Jot down your thoughts, quotes, or takeaways..."
               aria-label={`Notes for ${book.title}`}
             />
           </div>
