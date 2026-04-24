@@ -1,9 +1,9 @@
 import './LoadingState.css';
 
-export default function LoadingState({ count = 6 }) {
+export default function LoadingState({ count = 4 }) {
   return (
     <div className="loading-state" id="loading-state">
-      <div className="loading-state__grid book-grid">
+      <div className="loading-state__grid loading-grid">
         {Array.from({ length: count }).map((_, i) => (
           <div className="skeleton-card card" key={i}>
             <div className="skeleton-card__cover skeleton" />

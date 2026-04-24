@@ -16,10 +16,7 @@
   box-shadow: var(--shadow-lift);
 }
 
-/* Level-colored top edge */
-.book-card--beginner.card { border-top-color: var(--accent-forest); }
-.book-card--intermediate.card { border-top-color: var(--accent-blue); }
-.book-card--advanced.card { border-top-color: var(--accent-rust); }
+/* Removed Level-colored top edges */
 
 .book-card__cover-wrap {
   position: relative;

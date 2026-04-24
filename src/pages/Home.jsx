@@ -33,21 +33,34 @@ export default function Home() {
           </div>
 
           <div className="home__hero-visual">
-            <div className="home__path-preview">
-              <div className="home__path-card">
-                <span className="home__path-step">Start here</span>
-                <h4>Introduction to Machine Learning</h4>
-                <p>Beginner overview</p>
+            <div className="home__topic-snapshot">
+              <div className="home__snapshot-header">
+                <span className="home__snapshot-label">Example</span>
+                <h3 className="home__snapshot-title">Machine Learning</h3>
+                <span className="home__snapshot-count">14 books found</span>
               </div>
-              <div className="home__path-card">
-                <span className="home__path-step">Build depth</span>
-                <h4>Pattern Recognition and ML</h4>
-                <p>Broader survey</p>
-              </div>
-              <div className="home__path-card">
-                <span className="home__path-step">Go further</span>
-                <h4>Deep Learning</h4>
-                <p>Dense and technical</p>
+              <div className="home__snapshot-levels">
+                <div className="home__snapshot-level">
+                  <span className="home__snapshot-icon">🌱</span>
+                  <div className="home__snapshot-info">
+                    <span className="home__snapshot-step">Start here</span>
+                    <span className="home__snapshot-desc">Beginner fundamentals</span>
+                  </div>
+                </div>
+                <div className="home__snapshot-level">
+                  <span className="home__snapshot-icon">📘</span>
+                  <div className="home__snapshot-info">
+                    <span className="home__snapshot-step">Build depth</span>
+                    <span className="home__snapshot-desc">Broader surveys</span>
+                  </div>
+                </div>
+                <div className="home__snapshot-level">
+                  <span className="home__snapshot-icon">🔬</span>
+                  <div className="home__snapshot-info">
+                    <span className="home__snapshot-step">Go further</span>
+                    <span className="home__snapshot-desc">Advanced, technical texts</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

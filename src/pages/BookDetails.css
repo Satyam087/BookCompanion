@@ -77,7 +77,6 @@
   padding: var(--space-lg);
   border-radius: var(--radius-md);
   border: 1px solid #B7DFC9;
-  border-left: 4px solid var(--accent-forest);
   margin-top: var(--space-sm);
   width: 100%;
 }

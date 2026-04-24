@@ -79,7 +79,7 @@ export default function TopicResults({ topic }) {
           </div>
         </div>
 
-        {loading && <LoadingState count={3} />}
+        {loading && <LoadingState count={4} />}
 
         {error && <ErrorState message={error} onRetry={fetchBooks} />}
 
@@ -127,11 +127,11 @@ export default function TopicResults({ topic }) {
 
             <div className="topic-results__nav-rail">
               <span className="topic-results__rail-label">Path:</span>
-              <a href="#level-beginner" className="topic-results__rail-link">1. Beginner</a>
+              <button onClick={() => document.getElementById('level-beginner')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="topic-results__rail-link">1. Beginner</button>
               <span className="topic-results__rail-sep">→</span>
-              <a href="#level-intermediate" className="topic-results__rail-link">2. Intermediate</a>
+              <button onClick={() => document.getElementById('level-intermediate')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="topic-results__rail-link">2. Intermediate</button>
               <span className="topic-results__rail-sep">→</span>
-              <a href="#level-advanced" className="topic-results__rail-link">3. Advanced</a>
+              <button onClick={() => document.getElementById('level-advanced')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="topic-results__rail-link">3. Advanced</button>
             </div>
 
             <div className="topic-results__levels">
