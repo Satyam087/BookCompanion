@@ -34,21 +34,21 @@ export default function Home() {
 
           <div className="home__hero-visual">
             <div className="home__path-preview">
-              <div className="home__path-card home__path-card--1">
+              <div className="home__path-card">
                 <span className="home__path-step">Start here</span>
-                <span className="home__path-marker home__path-marker--forest"></span>
+                <span className="home__path-icon">🌱</span>
                 <h4>Introduction to Machine Learning</h4>
                 <p>Beginner overview</p>
               </div>
-              <div className="home__path-card home__path-card--2">
+              <div className="home__path-card">
                 <span className="home__path-step">Build depth</span>
-                <span className="home__path-marker home__path-marker--blue"></span>
+                <span className="home__path-icon">📘</span>
                 <h4>Pattern Recognition and ML</h4>
                 <p>Broader survey</p>
               </div>
-              <div className="home__path-card home__path-card--3">
+              <div className="home__path-card">
                 <span className="home__path-step">Go further</span>
-                <span className="home__path-marker home__path-marker--rust"></span>
+                <span className="home__path-icon">🔬</span>
                 <h4>Deep Learning</h4>
                 <p>Dense and technical</p>
               </div>

@@ -80,9 +80,9 @@
   box-shadow: var(--shadow-md);
 }
 
-.home__path-card--1 { border-top: 3px solid var(--accent-forest); }
-.home__path-card--2 { border-top: 3px solid var(--accent-blue); }
-.home__path-card--3 { border-top: 3px solid var(--accent-rust); }
+.home__path-card--1 { }
+.home__path-card--2 { }
+.home__path-card--3 { }
 
 .home__path-step {
   display: block;
@@ -94,18 +94,13 @@
   margin-bottom: var(--space-xs);
 }
 
-.home__path-marker {
+.home__path-icon {
   position: absolute;
-  top: var(--space-md);
+  top: 14px;
   right: var(--space-md);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+  font-size: 1.125rem;
+  line-height: 1;
 }
-
-.home__path-marker--forest { background-color: var(--accent-forest); }
-.home__path-marker--blue { background-color: var(--accent-blue); }
-.home__path-marker--rust { background-color: var(--accent-rust); }
 
 .home__path-card h4 {
   font-size: 1rem;
