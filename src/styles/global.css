@@ -1,6 +1,8 @@
 /* ========================================
    PageNotes Design System
-   Editorial, bookish, notebook-inspired
+   Editorial study tool — reading desk,
+   index cards, annotated notebook,
+   library catalog.
    ======================================== */
 
 /* --- Reset & Base --- */
@@ -14,10 +16,17 @@
 
 :root {
   /* Backgrounds */
-  --bg-warm: #FAF7F2;
+  --bg-warm: #F8F4EE;
   --bg-paper: #FFFFFF;
-  --bg-section: #F3EDE4;
-  --bg-hover: #F0EAE0;
+  --bg-section: #F0EAE0;
+  --bg-hover: #EBE4D8;
+  --bg-ruled: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 27px,
+    #E8E0D5 27px,
+    #E8E0D5 28px
+  );
 
   /* Text */
   --text-primary: #2C2C2C;
@@ -44,16 +53,17 @@
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(44, 44, 44, 0.06);
   --shadow-md: 0 4px 12px rgba(44, 44, 44, 0.1);
-  --shadow-lg: 0 8px 24px rgba(44, 44, 44, 0.12);
+  --shadow-lg: 0 8px 24px rgba(44, 44, 44, 0.14);
+  --shadow-lift: 0 12px 32px rgba(44, 44, 44, 0.16);
 
   /* Radius */
-  --radius-sm: 4px;
+  --radius-sm: 3px;
   --radius-md: 6px;
   --radius-lg: 10px;
 
   /* Typography */
   --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
-  --font-body: 'Source Sans 3', 'Segoe UI', -apple-system, sans-serif;
+  --font-sans: 'Source Sans 3', 'Segoe UI', -apple-system, sans-serif;
 
   /* Spacing */
   --space-xs: 4px;
@@ -62,11 +72,11 @@
   --space-lg: 24px;
   --space-xl: 32px;
   --space-2xl: 48px;
-  --space-3xl: 64px;
+  --space-3xl: 72px;
 
   /* Layout */
   --container-max: 1120px;
-  --header-height: 64px;
+  --header-height: 60px;
 }
 
 html {
@@ -76,11 +86,14 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-weight: 400;
+  font-size: 0.9375rem;
   line-height: 1.6;
   color: var(--text-primary);
   background-color: var(--bg-warm);
+  background-image: var(--bg-ruled);
+  background-attachment: fixed;
   min-height: 100vh;
 }
 
@@ -88,18 +101,18 @@ body {
 h1, h2, h3, h4 {
   font-family: var(--font-serif);
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.25;
   color: var(--text-primary);
 }
 
 h1 {
-  font-size: 2.25rem;
-  letter-spacing: -0.02em;
+  font-size: 2.75rem;
+  letter-spacing: -0.03em;
 }
 
 h2 {
-  font-size: 1.625rem;
-  letter-spacing: -0.01em;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
 }
 
 h3 {
@@ -107,13 +120,14 @@ h3 {
 }
 
 h4 {
-  font-size: 1.05rem;
+  font-size: 1.0625rem;
   font-weight: 500;
 }
 
 p {
   color: var(--text-secondary);
-  max-width: 65ch;
+  max-width: 62ch;
+  font-size: 0.9375rem;
 }
 
 a {
@@ -136,16 +150,16 @@ ul, ol {
 }
 
 button {
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   cursor: pointer;
   border: none;
   background: none;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
 }
 
 input, textarea, select {
-  font-family: var(--font-body);
-  font-size: 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
 }
 
 /* --- Layout --- */
@@ -177,7 +191,7 @@ input, textarea, select {
   padding: 10px 20px;
   border-radius: var(--radius-md);
   font-weight: 500;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   transition: all 0.2s ease;
   white-space: nowrap;
 }
@@ -195,14 +209,15 @@ input, textarea, select {
 }
 
 .btn-secondary {
-  background-color: var(--bg-paper);
-  color: var(--accent-forest);
-  border: 1px solid var(--border-dark);
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
 }
 
 .btn-secondary:hover {
   background-color: var(--bg-section);
-  border-color: var(--accent-forest);
+  border-color: var(--border-dark);
+  color: var(--text-primary);
 }
 
 .btn-ghost {
@@ -215,6 +230,23 @@ input, textarea, select {
 .btn-ghost:hover {
   background-color: var(--bg-section);
   color: var(--text-primary);
+}
+
+.btn-text {
+  background: transparent;
+  color: var(--accent-forest);
+  border: none;
+  padding: 6px 4px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-text:hover {
+  text-decoration-color: var(--accent-forest);
+  color: var(--accent-forest-light);
 }
 
 .btn-danger {
@@ -246,7 +278,7 @@ input, textarea, select {
   border-radius: var(--radius-md);
   background-color: var(--bg-paper);
   color: var(--text-primary);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -263,27 +295,29 @@ input, textarea, select {
 /* --- Cards --- */
 .card {
   background-color: var(--bg-paper);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-dark);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
 }
 
 .card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
 }
 
 /* --- Tags / Chips --- */
 .tag {
   display: inline-block;
-  padding: 3px 10px;
-  border-radius: 100px;
-  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
   font-weight: 500;
   border: 1px solid var(--border);
   color: var(--text-secondary);
   background-color: var(--bg-warm);
+  letter-spacing: 0.02em;
 }
 
 /* --- Level Badges --- */
@@ -292,29 +326,30 @@ input, textarea, select {
   align-items: center;
   gap: 4px;
   padding: 3px 10px;
-  border-radius: 100px;
+  border-radius: var(--radius-sm);
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  background-color: transparent;
 }
 
 .level-badge--beginner {
-  background-color: var(--accent-forest-bg);
   color: var(--accent-forest);
-  border: 1px solid #B7DFC9;
+  border: 1px solid var(--accent-forest);
+  border-left: 3px solid var(--accent-forest);
 }
 
 .level-badge--intermediate {
-  background-color: var(--accent-blue-bg);
   color: var(--accent-blue);
-  border: 1px solid #B5C9E3;
+  border: 1px solid var(--accent-blue);
+  border-left: 3px solid var(--accent-blue);
 }
 
 .level-badge--advanced {
-  background-color: var(--accent-rust-bg);
   color: var(--accent-rust);
-  border: 1px solid #E8C4B4;
+  border: 1px solid var(--accent-rust);
+  border-left: 3px solid var(--accent-rust);
 }
 
 /* --- Status Badges --- */
@@ -323,7 +358,7 @@ input, textarea, select {
   align-items: center;
   gap: 4px;
   padding: 3px 10px;
-  border-radius: 100px;
+  border-radius: var(--radius-sm);
   font-size: 0.75rem;
   font-weight: 600;
 }
@@ -350,7 +385,7 @@ input, textarea, select {
   border-radius: var(--radius-md);
   background-color: var(--bg-paper);
   color: var(--text-primary);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   cursor: pointer;
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B6560' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
@@ -414,7 +449,7 @@ input, textarea, select {
 
 .tab-btn {
   padding: 10px 20px;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--text-muted);
   border-bottom: 2px solid transparent;
@@ -456,7 +491,7 @@ input, textarea, select {
 /* --- Grid --- */
 .book-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: var(--space-lg);
 }
 
@@ -466,7 +501,7 @@ input, textarea, select {
     --header-height: 56px;
   }
 
-  h1 { font-size: 1.75rem; }
+  h1 { font-size: 2rem; }
   h2 { font-size: 1.375rem; }
   h3 { font-size: 1.1rem; }
 
@@ -480,17 +515,21 @@ input, textarea, select {
   }
 
   .book-grid {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: var(--space-md);
   }
 }
 
 @media (max-width: 480px) {
-  h1 { font-size: 1.5rem; }
+  h1 { font-size: 1.625rem; }
+
+  .container {
+    padding: 0 var(--space-sm);
+  }
 
   .btn {
     padding: 8px 16px;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
   }
 
   .book-grid {
@@ -499,6 +538,6 @@ input, textarea, select {
 
   .tab-btn {
     padding: 8px 14px;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
   }
 }

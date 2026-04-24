@@ -22,7 +22,7 @@ Most book search tools simply return a massive list of results. They don't help 
 - **Offline persistence:** Your journey, notes, and recent searches are saved to your browser's local storage.
 
 ## Tech stack
-- **React 18** (UI library)
+- **React 19** (UI library)
 - **Vite** (Build tool)
 - **Vanilla CSS3** (Styling, custom properties, responsive design)
 - **JavaScript ES6+** (Logic and API integration)
@@ -48,7 +48,7 @@ PageNotes relies exclusively on the free APIs provided by Open Library:
 - **Missing Data:** Books missing covers use a clean SVG placeholder. Missing descriptions, authors, or publish years are gracefully handled with fallback text.
 - **Classification:** If a book lacks clear beginner or advanced keywords in its title or subjects, it is safely defaulted to the "Intermediate" level.
 - **Storage Limits:** Local storage operations are wrapped in `try/catch` blocks to prevent crashes if the browser's storage quota is exceeded or unavailable.
-- **Network Issues:** API calls include an 8-second abort timeout and robust error catching to display user-friendly error states with retry options.
+- **Network Issues:** API calls include a 10-second abort timeout and robust error catching to display user-friendly error states with retry options.
 - **Long Text:** Extremely long book titles or subject tags are safely truncated.
 
 ## What I would improve with more time
@@ -58,5 +58,5 @@ PageNotes relies exclusively on the free APIs provided by Open Library:
 - Add the ability to create custom, user-defined lists beyond the standard "To Read", "Reading", and "Completed" statuses.
 
 ## Links
-- **Live deployment:** [Add Vercel/Netlify link here]
+- **Local Dev:** Run `npm run dev` to start the local development server at `http://localhost:5173/`.
 - **Repository:** https://github.com/Satyam087/BookCompanion.git
