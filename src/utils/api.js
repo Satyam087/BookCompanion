@@ -85,7 +85,7 @@ function normalizeSubjectBook(work) {
  * Search books by topic
  * Uses the Search API to find books related to a topic
  */
-export async function searchBooks(topic, limit = 40) {
+export async function searchBooks(topic, limit = 20) {
   const encoded = encodeURIComponent(topic);
   const url = `${BASE_URL}/search.json?q=${encoded}&fields=key,title,author_name,cover_i,first_publish_year,subject,edition_count&limit=${limit}`;
 

@@ -25,10 +25,13 @@ export default function TopicResults({ topic }) {
     searchBooks(decodedTopic)
       .then((results) => {
         setBooks(results);
-        setGrouped(groupBooksByLevel(results));
         if (results.length > 0) {
           addRecentSearch(decodedTopic);
         }
+        // Defer grouping to next frame so the summary shell paints first
+        requestAnimationFrame(() => {
+          setGrouped(groupBooksByLevel(results));
+        });
       })
       .catch((err) => {
         setError(err.message || 'Failed to search books.');
