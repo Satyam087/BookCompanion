@@ -332,6 +332,8 @@ input, textarea, select {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   background-color: transparent;
+  align-self: flex-start;
+  width: fit-content;
 }
 
 .level-badge--beginner {
