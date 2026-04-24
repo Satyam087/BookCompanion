@@ -1,15 +1,15 @@
 import leafImg from '../assets/leaf.png';
 import './LeafOrnament.css';
 
-export default function LeafOrnament({ 
-  className = '', 
-  size = 'medium', 
-  opacity = 0.85, 
+export default function LeafOrnament({
+  className = '',
+  size = 'medium',
+  opacity = 0.85,
   rotation = 0,
   style = {},
   ...props
 }) {
-  
+
   const sizeMap = {
     tiny: 24,
     small: 40,
@@ -20,14 +20,14 @@ export default function LeafOrnament({
   const pxSize = sizeMap[size] || sizeMap.medium;
 
   return (
-    <img 
+    <img
       src={leafImg}
       className={`leaf-ornament ${className}`}
-      width={pxSize} 
-      height={pxSize} 
+      width={pxSize}
+      height={pxSize}
       alt=""
-      style={{ 
-        opacity, 
+      style={{
+        opacity,
         transform: `rotate(${rotation}deg)`,
         objectFit: 'contain',
         ...style

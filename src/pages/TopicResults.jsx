@@ -29,11 +29,8 @@ export default function TopicResults({ topic }) {
         if (results.length > 0) {
           addRecentSearch(decodedTopic);
         }
-        // Defer grouping and loading state completion to next frame
-        requestAnimationFrame(() => {
-          setGrouped(groupBooksByLevel(results));
-          setLoading(false);
-        });
+        setGrouped(groupBooksByLevel(results));
+        setLoading(false);
       })
       .catch((err) => {
         setError(err.message || 'Failed to search books.');
