@@ -167,6 +167,35 @@
   color: var(--accent-blue);
 }
 
+.home__desk-leaf {
+  position: absolute;
+  font-size: 1.5rem;
+  z-index: 0;
+  user-select: none;
+  opacity: 0.85;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.home__desk-leaf--1 {
+  top: -10px;
+  right: 60px;
+  transform: rotate(15deg);
+}
+
+.home__desk-leaf--2 {
+  bottom: 10px;
+  left: 20px;
+  transform: rotate(-25deg);
+  font-size: 1.8rem;
+  z-index: 4; 
+}
+
+.home__desk-leaf--3 {
+  top: 100px;
+  left: -20px;
+  transform: rotate(45deg);
+}
+
 
 
 /* === How It Works === */

@@ -34,6 +34,9 @@ export default function Home() {
 
           <div className="home__hero-visual">
             <div className="home__study-desk">
+              <span className="home__desk-leaf home__desk-leaf--1">🍂</span>
+              <span className="home__desk-leaf home__desk-leaf--2">🍃</span>
+              <span className="home__desk-leaf home__desk-leaf--3">🍁</span>
               <div className="home__desk-book">
                 <div className="home__desk-book-cover">
                   <span className="home__desk-book-title">The Design of Everyday Things</span>
