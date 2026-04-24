@@ -1,0 +1,6 @@
+.leaf-ornament {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+}

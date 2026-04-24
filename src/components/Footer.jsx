@@ -1,9 +1,16 @@
+import LeafOrnament from './LeafOrnament';
 import './Footer.css';
 
 export default function Footer() {
   return (
     <footer className="footer" id="footer">
-      <div className="footer__inner container">
+      <div className="footer__inner container" style={{ position: 'relative' }}>
+        <LeafOrnament 
+          size="tiny" 
+          opacity={0.06} 
+          rotation={-15} 
+          style={{ position: 'absolute', top: -10, left: 10 }} 
+        />
         <div className="footer__brand">
           <span className="footer__icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">

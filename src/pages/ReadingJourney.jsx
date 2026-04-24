@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { getSavedBooks, updateBookStatus, updateBookNotes, removeBook } from '../utils/storage';
 import { formatAuthors, getPlaceholderCover, navigate, getWorkIdFromKey, truncateText } from '../utils/helpers';
 import EmptyState from '../components/EmptyState';
+import LeafOrnament from '../components/LeafOrnament';
 import './ReadingJourney.css';
 
 const TABS = [
@@ -46,7 +47,13 @@ export default function ReadingJourney() {
 
   return (
     <div className="page reading-journey" id="reading-journey-page">
-      <div className="container">
+      <div className="container" style={{ position: 'relative' }}>
+        <LeafOrnament 
+          size="tiny" 
+          opacity={0.15} 
+          rotation={-25} 
+          style={{ position: 'absolute', top: 10, right: 10 }} 
+        />
         <h1 className="reading-journey__title">My Reading Journey</h1>
         <p className="reading-journey__subtitle">
           {books.length > 0
@@ -121,12 +128,20 @@ export default function ReadingJourney() {
 
         {/* Book List */}
         {books.length === 0 && (
-          <EmptyState
-            heading="No saved books yet"
-            message="Search for a topic and save books to build your reading journey."
-            actionLabel="Start searching"
-            onAction={() => navigate('/')}
-          />
+          <div style={{ position: 'relative' }}>
+            <LeafOrnament 
+              size="small" 
+              opacity={0.08} 
+              rotation={35} 
+              style={{ position: 'absolute', top: '20%', left: '10%' }} 
+            />
+            <EmptyState
+              heading="No saved books yet"
+              message="Search for a topic and save books to build your reading journey."
+              actionLabel="Start searching"
+              onAction={() => navigate('/')}
+            />
+          </div>
         )}
 
         {books.length > 0 && filtered.length === 0 && (

@@ -8,6 +8,7 @@ import SearchBar from '../components/SearchBar';
 import LoadingState from '../components/LoadingState';
 import EmptyState from '../components/EmptyState';
 import ErrorState from '../components/ErrorState';
+import LeafOrnament from '../components/LeafOrnament';
 import './TopicResults.css';
 
 export default function TopicResults({ topic }) {
@@ -94,7 +95,13 @@ export default function TopicResults({ topic }) {
 
         {!loading && !error && grouped && (
           <>
-            <div className="topic-results__summary-panel">
+            <div className="topic-results__summary-panel" style={{ position: 'relative' }}>
+              <LeafOrnament 
+                size="tiny" 
+                opacity={0.12} 
+                rotation={15} 
+                style={{ position: 'absolute', top: -10, right: -10 }} 
+              />
               <div className="topic-results__summary-info">
                 <span className="topic-results__summary-label">Learning Path For</span>
                 <h1 className="topic-results__summary-title">{decodedTopic}</h1>
@@ -125,7 +132,13 @@ export default function TopicResults({ topic }) {
               )}
             </div>
 
-            <div className="topic-results__nav-rail">
+            <div className="topic-results__nav-rail" style={{ position: 'relative' }}>
+              <LeafOrnament 
+                size="small" 
+                opacity={0.08} 
+                rotation={-30} 
+                style={{ position: 'absolute', top: -20, left: -40 }} 
+              />
               <span className="topic-results__rail-label">Path:</span>
               <button onClick={() => document.getElementById('level-beginner')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="topic-results__rail-link">1. Beginner</button>
               <span className="topic-results__rail-sep">→</span>

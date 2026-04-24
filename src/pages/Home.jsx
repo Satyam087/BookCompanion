@@ -2,6 +2,7 @@ import SearchBar from '../components/SearchBar';
 import TopicChips from '../components/TopicChips';
 import { getRecentSearches } from '../utils/storage';
 import { navigate } from '../utils/helpers';
+import LeafOrnament from '../components/LeafOrnament';
 import './Home.css';
 
 export default function Home() {
@@ -13,13 +14,19 @@ export default function Home() {
 
         {/* Editorial Two-Column Hero */}
         <section className="home__hero">
+          <LeafOrnament 
+            size="large" 
+            opacity={0.08} 
+            rotation={25} 
+            className="home__leaf-hero" 
+          />
           <div className="home__hero-content">
             <span className="home__eyebrow">Structured topic reading for self-learners</span>
             <h1 className="home__heading">
               Study any topic.<br />Read in the right order.
             </h1>
             <p className="home__subtitle">
-              Enter a subject and PageNotes turns the Open Library catalog 
+              Enter a subject and PageNotes turns the Open Library catalog
               into a structured path, from beginner books to advanced reads.
             </p>
 
@@ -27,23 +34,26 @@ export default function Home() {
               <SearchBar size="large" />
             </div>
 
-            <div className="home__chips-wrap">
+            <div className="home__chips-wrap" style={{ position: 'relative' }}>
+              <LeafOrnament 
+                size="small" 
+                opacity={0.15} 
+                rotation={-15} 
+                className="home__leaf-chips" 
+              />
               <TopicChips />
             </div>
           </div>
 
           <div className="home__hero-visual">
             <div className="home__study-desk">
-              <span className="home__desk-leaf home__desk-leaf--1">🍂</span>
-              <span className="home__desk-leaf home__desk-leaf--2">🍃</span>
-              <span className="home__desk-leaf home__desk-leaf--3">🍁</span>
               <div className="home__desk-book">
                 <div className="home__desk-book-cover">
                   <span className="home__desk-book-title">The Design of Everyday Things</span>
                   <span className="home__desk-book-author">Don Norman</span>
                 </div>
               </div>
-              
+
               <div className="home__desk-note home__desk-note--1">
                 <div className="home__desk-pin"></div>
                 <p>Start with chapters 1-3 for foundational concepts.</p>
@@ -61,6 +71,10 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+          <LeafOrnament size="tiny" opacity={0.12} rotation={90} />
+        </div>
 
         {/* Product Steps */}
         <section className="home__how" id="how-it-works">
@@ -92,7 +106,13 @@ export default function Home() {
 
         {/* Recent Searches */}
         {recentSearches.length > 0 && (
-          <section className="home__recent" id="recent-searches">
+          <section className="home__recent" id="recent-searches" style={{ position: 'relative' }}>
+            <LeafOrnament 
+              size="medium" 
+              opacity={0.06} 
+              rotation={-45} 
+              className="home__leaf-recent" 
+            />
             <h2 className="home__section-title">Recent searches</h2>
             <div className="home__recent-list">
               {recentSearches.map((topic, i) => (

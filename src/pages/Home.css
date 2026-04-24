@@ -5,6 +5,22 @@
   align-items: center;
   gap: var(--space-xl);
   padding: var(--space-3xl) 0 var(--space-2xl);
+  position: relative;
+}
+
+.home__leaf-hero {
+  top: 10%;
+  right: -5%;
+}
+
+.home__leaf-chips {
+  top: -10px;
+  right: 10px;
+}
+
+.home__leaf-recent {
+  bottom: 0;
+  right: 0;
 }
 
 .home__hero-content {
@@ -139,7 +155,7 @@
   height: 8px;
   background-color: var(--accent-rust);
   border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .home__desk-note--1 {
@@ -165,35 +181,6 @@
   padding: var(--space-sm) var(--space-md);
   font-weight: 500;
   color: var(--accent-blue);
-}
-
-.home__desk-leaf {
-  position: absolute;
-  font-size: 1.5rem;
-  z-index: 0;
-  user-select: none;
-  opacity: 0.85;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-}
-
-.home__desk-leaf--1 {
-  top: -10px;
-  right: 60px;
-  transform: rotate(15deg);
-}
-
-.home__desk-leaf--2 {
-  bottom: 10px;
-  left: 20px;
-  transform: rotate(-25deg);
-  font-size: 1.8rem;
-  z-index: 4; 
-}
-
-.home__desk-leaf--3 {
-  top: 100px;
-  left: -20px;
-  transform: rotate(45deg);
 }
 
 
