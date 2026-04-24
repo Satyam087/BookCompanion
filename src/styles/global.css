@@ -14,6 +14,16 @@
   padding: 0;
 }
 
+/* Hide scrollbars visually but keep scrolling functionality */
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 :root {
   /* Backgrounds */
   --bg-warm: #F8F4EE;
@@ -81,6 +91,7 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
@@ -93,6 +104,7 @@ body {
   background-image: var(--bg-ruled);
   background-attachment: fixed;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* --- Typography --- */
