@@ -46,10 +46,11 @@ export default function Home() {
           <div className="home__hero-visual">
             <div className="home__study-desk">
               <div className="home__desk-book">
-                <div className="home__desk-book-cover">
-                  <span className="home__desk-book-title">The Design of Everyday Things</span>
-                  <span className="home__desk-book-author">Don Norman</span>
-                </div>
+                <img 
+                  src="https://covers.openlibrary.org/b/id/8259440-L.jpg" 
+                  alt="The Design of Everyday Things" 
+                  className="home__desk-book-cover" 
+                />
               </div>
 
               <div className="home__desk-note home__desk-note--1">
