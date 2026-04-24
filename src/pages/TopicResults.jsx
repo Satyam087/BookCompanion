@@ -21,8 +21,6 @@ export default function TopicResults({ topic }) {
   const fetchBooks = useCallback(() => {
     setLoading(true);
     setError(null);
-    setBooks(null);
-    setGrouped(null);
 
     searchBooks(decodedTopic)
       .then((results) => {
@@ -78,7 +76,7 @@ export default function TopicResults({ topic }) {
           </div>
         </div>
 
-        {loading && <LoadingState count={6} />}
+        {loading && <LoadingState count={3} />}
 
         {error && <ErrorState message={error} onRetry={fetchBooks} />}
 
