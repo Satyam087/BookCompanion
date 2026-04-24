@@ -14,6 +14,8 @@
 .book-details__cover-col {
   flex-shrink: 0;
   width: 240px;
+  position: sticky;
+  top: var(--space-2xl);
 }
 
 .book-details__cover {
@@ -34,6 +36,7 @@
   font-size: 2rem;
   line-height: 1.2;
   margin-top: var(--space-sm);
+  font-family: var(--font-serif);
 }
 
 .book-details__author {
@@ -50,7 +53,7 @@
 }
 
 .book-details__description h3,
-.book-details__level-reason h3,
+.book-details__level-callout h3,
 .book-details__subjects h3 {
   font-size: 1rem;
   font-family: var(--font-serif);
@@ -69,17 +72,25 @@
   font-style: italic;
 }
 
-.book-details__level-reason {
-  background-color: var(--bg-section);
-  padding: var(--space-md);
+.book-details__level-callout {
+  background-color: var(--accent-forest-bg);
+  padding: var(--space-lg);
   border-radius: var(--radius-md);
-  border: 1px solid var(--border);
+  border: 1px solid #B7DFC9;
+  border-left: 4px solid var(--accent-forest);
+  margin: var(--space-sm) 0;
 }
 
-.book-details__level-reason p {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
+.book-details__level-callout h3 {
+  color: var(--accent-forest);
+  font-size: 1.125rem;
+}
+
+.book-details__level-callout p {
+  font-size: 0.9375rem;
+  color: var(--text-primary);
   line-height: 1.6;
+  margin: 0;
 }
 
 .book-details__tags {
@@ -88,11 +99,24 @@
   gap: 6px;
 }
 
+.tag--clickable {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tag--clickable:hover {
+  background-color: var(--accent-forest);
+  color: white;
+  border-color: var(--accent-forest);
+}
+
 .book-details__actions {
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  margin-top: var(--space-sm);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border);
   flex-wrap: wrap;
 }
 
@@ -107,46 +131,55 @@
 }
 
 .book-details__related-desc {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   color: var(--text-muted);
   margin-bottom: var(--space-lg);
+}
+
+/* Description and callout spacing */
+.book-details__description,
+.book-details__level-callout,
+.book-details__subjects {
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border);
 }
 
 @media (max-width: 768px) {
   .book-details__main {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--space-lg);
   }
 
   .book-details__cover-col {
-    width: 180px;
+    width: 160px;
+    position: static;
   }
 
   .book-details__title {
     font-size: 1.5rem;
-    text-align: center;
+    text-align: left;
   }
 
   .book-details__info-col {
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
   }
 
   .book-details__tags {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .book-details__actions {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
-  .book-details__level-reason {
+  .book-details__level-callout {
     text-align: left;
   }
 
   .book-details__loading {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 }

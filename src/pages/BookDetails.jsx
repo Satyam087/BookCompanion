@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { getBookDetails, getRelatedBooks } from '../utils/api';
 import { classifyBook } from '../utils/levelClassifier';
 import { isBookSaved, saveBook, removeBook, updateBookStatus, getSavedBooks } from '../utils/storage';
-import { formatAuthors, formatYear, getPlaceholderCover, navigate, getWorkIdFromKey } from '../utils/helpers';
+import { formatAuthors, formatYear, getPlaceholderCover, navigate } from '../utils/helpers';
 import BookGrid from '../components/BookGrid';
-import LoadingState from '../components/LoadingState';
 import ErrorState from '../components/ErrorState';
 import './BookDetails.css';
 
@@ -25,7 +24,7 @@ export default function BookDetails({ workId }) {
 
   const fullWorkId = workId.startsWith('/works/') ? workId : `/works/${workId}`;
 
-  const fetchDetails = () => {
+  const fetchDetails = useCallback(() => {
     setLoading(true);
     setError(null);
 
@@ -68,12 +67,15 @@ export default function BookDetails({ workId }) {
       .finally(() => {
         setLoading(false);
       });
-  };
+  }, [fullWorkId]);
 
   useEffect(() => {
-    fetchDetails();
+    const runFetch = async () => {
+      fetchDetails();
+    };
+    runFetch();
     window.scrollTo(0, 0);
-  }, [workId]);
+  }, [fetchDetails]);
 
   const handleSave = () => {
     if (saved) {
@@ -168,21 +170,29 @@ export default function BookDetails({ workId }) {
             {!book.description && (
               <div className="book-details__description">
                 <h3>About this book</h3>
-                <p className="book-details__no-desc">No description available for this work.</p>
+                <p className="book-details__no-desc">
+                  This work has limited catalog detail{book.subjects && book.subjects.length > 0 ? `, but it appears in reading paths for topics like ${book.subjects[0]}` : ''}.
+                </p>
               </div>
             )}
 
-            <div className="book-details__level-reason">
-              <h3>Why this level?</h3>
+            <div className="book-details__level-callout">
+              <h3>Why is this {book.level}?</h3>
               <p>{LEVEL_REASONS[book.level]}</p>
             </div>
 
             {book.subjects && book.subjects.length > 0 && (
               <div className="book-details__subjects">
-                <h3>Subjects</h3>
+                <h3>Explore Related Topics</h3>
                 <div className="book-details__tags">
                   {book.subjects.slice(0, 12).map((s, i) => (
-                    <span className="tag" key={i}>{s}</span>
+                    <button 
+                      className="tag tag--clickable" 
+                      key={i}
+                      onClick={() => navigate(`/topic/${encodeURIComponent(s)}`)}
+                    >
+                      {s}
+                    </button>
                   ))}
                 </div>
               </div>
@@ -194,7 +204,7 @@ export default function BookDetails({ workId }) {
                 onClick={handleSave}
                 id="save-book-btn"
               >
-                {saved ? '✕ Remove from list' : '♡ Save to my journey'}
+                {saved ? 'Remove from journey' : 'Save to journey'}
               </button>
 
               {saved && (
@@ -214,12 +224,12 @@ export default function BookDetails({ workId }) {
           </div>
         </div>
 
-        {/* Related Books */}
+        {/* Related Books / Next Steps */}
         {related.length > 0 && (
           <section className="book-details__related" id="related-books">
-            <h2>Related books</h2>
+            <h2>Next steps</h2>
             <p className="book-details__related-desc">
-              Books that share subjects with this one.
+              If you enjoyed this, or want to explore similar concepts, check out these related books.
             </p>
             <BookGrid books={related} />
           </section>
