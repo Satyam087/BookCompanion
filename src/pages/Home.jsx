@@ -40,14 +40,12 @@ export default function Home() {
                 <h4>Introduction to Machine Learning</h4>
                 <p>Beginner overview</p>
               </div>
-              <div className="home__path-connector"></div>
               <div className="home__path-card home__path-card--2">
                 <span className="home__path-step">Build depth</span>
                 <span className="home__path-marker home__path-marker--blue"></span>
                 <h4>Pattern Recognition and ML</h4>
                 <p>Broader survey</p>
               </div>
-              <div className="home__path-connector"></div>
               <div className="home__path-card home__path-card--3">
                 <span className="home__path-step">Go further</span>
                 <span className="home__path-marker home__path-marker--rust"></span>

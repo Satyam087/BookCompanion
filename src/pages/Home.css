@@ -1,9 +1,9 @@
 /* === Hero === */
 .home__hero {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
-  gap: var(--space-3xl);
+  gap: var(--space-2xl);
   padding: var(--space-3xl) 0 var(--space-2xl);
 }
 
@@ -54,24 +54,25 @@
 /* === Path Preview (right column) === */
 .home__hero-visual {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .home__path-preview {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  max-width: 300px;
+  gap: var(--space-sm);
+  max-width: 340px;
   width: 100%;
 }
 
 .home__path-card {
   background-color: var(--bg-paper);
-  border: 1px solid var(--border-dark);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: var(--space-md) var(--space-lg);
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-sm);
 }
 
 .home__path-card:hover {
@@ -119,12 +120,7 @@
   font-style: italic;
 }
 
-.home__path-connector {
-  width: 2px;
-  height: 16px;
-  background-color: var(--border);
-  margin-left: var(--space-lg);
-}
+
 
 /* === How It Works === */
 .home__how {
@@ -236,11 +232,11 @@
 @media (max-width: 992px) {
   .home__hero {
     grid-template-columns: 1fr;
-    gap: var(--space-2xl);
+    gap: var(--space-xl);
   }
 
   .home__path-preview {
-    max-width: 360px;
+    max-width: 400px;
   }
 }
 
