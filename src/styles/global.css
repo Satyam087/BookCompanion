@@ -310,9 +310,9 @@ input, textarea, select {
 /* --- Tags / Chips --- */
 .tag {
   display: inline-block;
-  padding: 2px 8px;
+  padding: 4px 10px;
   border-radius: var(--radius-sm);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 500;
   border: 1px solid var(--border);
   color: var(--text-secondary);

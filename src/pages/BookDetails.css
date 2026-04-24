@@ -30,6 +30,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+  align-items: flex-start;
 }
 
 .book-details__title {
@@ -64,7 +65,7 @@
 .book-details__description p {
   font-size: 0.9375rem;
   line-height: 1.7;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .book-details__no-desc {
@@ -78,7 +79,8 @@
   border-radius: var(--radius-md);
   border: 1px solid #B7DFC9;
   border-left: 4px solid var(--accent-forest);
-  margin: var(--space-sm) 0;
+  margin-top: var(--space-sm);
+  width: 100%;
 }
 
 .book-details__level-callout h3 {
@@ -138,10 +140,9 @@
 
 /* Description and callout spacing */
 .book-details__description,
-.book-details__level-callout,
 .book-details__subjects {
-  padding-bottom: var(--space-md);
-  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-sm);
+  width: 100%;
 }
 
 @media (max-width: 768px) {
