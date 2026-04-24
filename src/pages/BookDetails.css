@@ -6,7 +6,7 @@
 
 .book-details__main {
   display: flex;
-  gap: var(--space-2xl);
+  gap: var(--space-xl);
   margin-top: var(--space-xl);
   align-items: flex-start;
 }
@@ -63,8 +63,9 @@
 
 .book-details__description p {
   font-size: 0.9375rem;
-  line-height: 1.7;
+  line-height: 1.6;
   color: var(--text-primary);
+  max-width: 76ch;
 }
 
 .book-details__no-desc {
