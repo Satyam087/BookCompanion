@@ -1,0 +1,47 @@
+.footer {
+  background-color: var(--bg-paper);
+  border-top: 1px solid var(--border);
+  padding: var(--space-2xl) 0;
+  margin-top: auto;
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  text-align: center;
+}
+
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.footer__icon {
+  font-size: 1.25rem;
+}
+
+.footer__name {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.footer__tagline {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.footer__credit {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.footer__credit a {
+  color: var(--accent-forest);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
