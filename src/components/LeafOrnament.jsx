@@ -1,3 +1,4 @@
+import leafImg from '../assets/leaf.png';
 import './LeafOrnament.css';
 
 export default function LeafOrnament({ 
@@ -19,35 +20,20 @@ export default function LeafOrnament({
   const pxSize = sizeMap[size] || sizeMap.medium;
 
   return (
-    <svg 
+    <img 
+      src={leafImg}
       className={`leaf-ornament ${className}`}
       width={pxSize} 
       height={pxSize} 
-      viewBox="0 0 100 100"
+      alt=""
       style={{ 
         opacity, 
         transform: `rotate(${rotation}deg)`,
+        objectFit: 'contain',
         ...style
       }}
       aria-hidden="true"
       {...props}
-    >
-      <path 
-        d="M50 5C65 5 80 20 85 45C90 70 70 95 50 95C30 95 10 70 15 45C20 20 35 5 50 5Z" 
-        fill="#a67c52" 
-      />
-      <path 
-        d="M50 5V95" 
-        stroke="#87603c" 
-        strokeWidth="2" 
-        fill="none" 
-      />
-      <path 
-        d="M50 30L65 20 M50 50L70 40 M50 70L65 60 M50 30L35 20 M50 50L30 40 M50 70L35 60" 
-        stroke="#87603c" 
-        strokeWidth="1.5" 
-        fill="none" 
-      />
-    </svg>
+    />
   );
 }
