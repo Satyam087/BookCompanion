@@ -33,34 +33,27 @@ export default function Home() {
           </div>
 
           <div className="home__hero-visual">
-            <div className="home__topic-snapshot">
-              <div className="home__snapshot-header">
-                <span className="home__snapshot-label">Example</span>
-                <h3 className="home__snapshot-title">Machine Learning</h3>
-                <span className="home__snapshot-count">14 books found</span>
+            <div className="home__study-desk">
+              <div className="home__desk-book">
+                <div className="home__desk-book-cover">
+                  <span className="home__desk-book-title">The Design of Everyday Things</span>
+                  <span className="home__desk-book-author">Don Norman</span>
+                </div>
               </div>
-              <div className="home__snapshot-levels">
-                <div className="home__snapshot-level">
-                  <span className="home__snapshot-icon">🌱</span>
-                  <div className="home__snapshot-info">
-                    <span className="home__snapshot-step">Start here</span>
-                    <span className="home__snapshot-desc">Beginner fundamentals</span>
-                  </div>
-                </div>
-                <div className="home__snapshot-level">
-                  <span className="home__snapshot-icon">📘</span>
-                  <div className="home__snapshot-info">
-                    <span className="home__snapshot-step">Build depth</span>
-                    <span className="home__snapshot-desc">Broader surveys</span>
-                  </div>
-                </div>
-                <div className="home__snapshot-level">
-                  <span className="home__snapshot-icon">🔬</span>
-                  <div className="home__snapshot-info">
-                    <span className="home__snapshot-step">Go further</span>
-                    <span className="home__snapshot-desc">Advanced, technical texts</span>
-                  </div>
-                </div>
+              
+              <div className="home__desk-note home__desk-note--1">
+                <div className="home__desk-pin"></div>
+                <p>Start with chapters 1-3 for foundational concepts.</p>
+              </div>
+
+              <div className="home__desk-note home__desk-note--2">
+                <div className="home__desk-pin"></div>
+                <p>A classic in UX design and psychology.</p>
+              </div>
+
+              <div className="home__desk-note home__desk-note--3">
+                <div className="home__desk-pin"></div>
+                <p>Level: Beginner</p>
               </div>
             </div>
           </div>
