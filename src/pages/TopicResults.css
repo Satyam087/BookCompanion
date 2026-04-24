@@ -1,6 +1,7 @@
 .topic-results__header-bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: var(--space-xl);
   align-items: center;
   margin-bottom: var(--space-xl);
   padding-bottom: var(--space-md);
