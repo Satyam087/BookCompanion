@@ -2,6 +2,7 @@
   padding: var(--space-lg);
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
+  scroll-margin-top: var(--space-3xl);
 }
 
 .level-section--beginner {
@@ -85,10 +86,17 @@
 
 .level-section__toggle-wrap {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
   margin-top: var(--space-lg);
 }
 
 .level-section__toggle {
   font-size: 0.8125rem;
+}
+
+.level-section__toggle-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
 }

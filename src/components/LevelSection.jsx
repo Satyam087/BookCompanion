@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import BookGrid from './BookGrid';
 import './LevelSection.css';
 
@@ -27,15 +27,31 @@ export default function LevelSection({ level, books, onSaveChange }) {
   const [collapsed, setCollapsed] = useState(false);
   const info = LEVEL_INFO[level] || LEVEL_INFO.intermediate;
   const [expanded, setExpanded] = useState(false);
+  const sectionRef = useRef(null);
 
   if (!books || books.length === 0) return null;
 
   const initialCount = info.initialCount;
   const hasMore = books.length > initialCount;
   const visibleBooks = expanded ? books : books.slice(0, initialCount);
+  const hiddenCount = books.length - initialCount;
+
+  const handleCollapse = () => {
+    setExpanded(false);
+    // Scroll back to section header so the user doesn't lose context
+    if (sectionRef.current) {
+      requestAnimationFrame(() => {
+        sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  };
 
   return (
-    <section className={`level-section level-section--${level}`} id={`level-${level}`}>
+    <section
+      className={`level-section level-section--${level}`}
+      id={`level-${level}`}
+      ref={sectionRef}
+    >
       <button
         className="level-section__header"
         onClick={() => setCollapsed(!collapsed)}
@@ -61,15 +77,26 @@ export default function LevelSection({ level, books, onSaveChange }) {
           <BookGrid books={visibleBooks} onSaveChange={onSaveChange} />
           {hasMore && (
             <div className="level-section__toggle-wrap">
-              <button
-                className="btn btn-secondary level-section__toggle"
-                onClick={() => setExpanded(!expanded)}
-              >
-                {expanded
-                  ? `Show fewer ${info.label.toLowerCase()} books`
-                  : `Show all ${books.length} ${info.label.toLowerCase()} books`
-                }
-              </button>
+              {expanded ? (
+                <button
+                  className="btn btn-secondary level-section__toggle"
+                  onClick={handleCollapse}
+                >
+                  Collapse section
+                </button>
+              ) : (
+                <button
+                  className="btn btn-secondary level-section__toggle"
+                  onClick={() => setExpanded(true)}
+                >
+                  Show {hiddenCount} more {hiddenCount === 1 ? 'book' : 'books'}
+                </button>
+              )}
+              {!expanded && (
+                <span className="level-section__toggle-hint">
+                  Showing {initialCount} of {books.length}
+                </span>
+              )}
             </div>
           )}
         </div>
