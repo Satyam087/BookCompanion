@@ -4,7 +4,7 @@ import './Footer.css';
 export default function Footer() {
   return (
     <footer className="footer" id="footer">
-      <div className="footer__inner container" style={{ position: 'relative' }}>
+      <div className="footer__inner container" style={{ position: 'relative', zIndex: 0 }}>
         <LeafOrnament 
           size="tiny" 
           rotation={-15} 

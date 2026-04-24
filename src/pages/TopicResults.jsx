@@ -95,7 +95,7 @@ export default function TopicResults({ topic }) {
 
         {!loading && !error && grouped && (
           <>
-            <div className="topic-results__summary-panel" style={{ position: 'relative' }}>
+            <div className="topic-results__summary-panel" style={{ position: 'relative', zIndex: 0 }}>
               <LeafOrnament 
                 size="tiny" 
                 rotation={15} 
@@ -131,7 +131,7 @@ export default function TopicResults({ topic }) {
               )}
             </div>
 
-            <div className="topic-results__nav-rail" style={{ position: 'relative' }}>
+            <div className="topic-results__nav-rail" style={{ position: 'relative', zIndex: 0 }}>
               <LeafOrnament 
                 size="small" 
                 rotation={-30} 

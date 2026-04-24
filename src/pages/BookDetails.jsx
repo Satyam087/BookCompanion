@@ -148,7 +148,7 @@ export default function BookDetails({ workId }) {
             />
           </div>
 
-          <div className="book-details__info-col" style={{ position: 'relative' }}>
+          <div className="book-details__info-col" style={{ position: 'relative', zIndex: 0 }}>
             <LeafOrnament 
               size="medium" 
               rotation={45} 

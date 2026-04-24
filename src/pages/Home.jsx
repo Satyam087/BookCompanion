@@ -33,7 +33,7 @@ export default function Home() {
               <SearchBar size="large" />
             </div>
 
-            <div className="home__chips-wrap" style={{ position: 'relative' }}>
+            <div className="home__chips-wrap" style={{ position: 'relative', zIndex: 0 }}>
               <LeafOrnament 
                 size="small" 
                 rotation={-15} 
@@ -104,7 +104,7 @@ export default function Home() {
 
         {/* Recent Searches */}
         {recentSearches.length > 0 && (
-          <section className="home__recent" id="recent-searches" style={{ position: 'relative' }}>
+          <section className="home__recent" id="recent-searches" style={{ position: 'relative', zIndex: 0 }}>
             <LeafOrnament 
               size="medium" 
               rotation={-45} 

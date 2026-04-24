@@ -47,7 +47,7 @@ export default function ReadingJourney() {
 
   return (
     <div className="page reading-journey" id="reading-journey-page">
-      <div className="container" style={{ position: 'relative' }}>
+      <div className="container" style={{ position: 'relative', zIndex: 0 }}>
         <LeafOrnament 
           size="tiny" 
           rotation={-25} 
@@ -127,7 +127,7 @@ export default function ReadingJourney() {
 
         {/* Book List */}
         {books.length === 0 && (
-          <div style={{ position: 'relative' }}>
+          <div style={{ position: 'relative', zIndex: 0 }}>
             <LeafOrnament 
               size="small" 
               rotation={35} 
