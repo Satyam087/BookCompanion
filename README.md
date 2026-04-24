@@ -1,62 +1,108 @@
 # PageNotes
 
-A reading planner for students and self-learners who want to study a topic through books in a clear order.
-
-## What it is
-PageNotes takes a raw topic like "Machine Learning" or "Philosophy" and turns it into a structured reading path. It connects to the Open Library ecosystem to find relevant books and organizes them by reading level, helping you decide what to read first and what to read next.
-
-## Who it is for
-Students, self-learners, and curious readers who want structure, not just a disorganized list of search results.
-
-## The problem it solves
-Most book search tools simply return a massive list of results. They don't help you figure out where to start, what books are too advanced, or how to keep track of your reading progress. PageNotes solves this by automatically grouping books into Beginner, Intermediate, and Advanced levels based on their metadata, and provides built-in progress tracking.
-
-## Main features
-- **Topic search:** Enter any subject to get a curated reading path.
-- **Automatic level grouping:** Books are sorted into Beginner, Intermediate, and Advanced categories using intelligent keyword heuristics.
-- **Related books:** Discover new books based on shared subject tags.
-- **Reading Journey:** Save books to your personal list.
-- **Progress tracking:** Mark books as "To Read", "Reading", or "Completed".
-- **Notes:** Add personal notes to books in your reading journey.
-- **Recent searches:** Quickly jump back to topics you've explored recently.
-- **Offline persistence:** Your journey, notes, and recent searches are saved to your browser's local storage.
-
-## Tech stack
-- **React 19** (UI library)
-- **Vite** (Build tool)
-- **Vanilla CSS3** (Styling, custom properties, responsive design)
-- **JavaScript ES6+** (Logic and API integration)
-- **HTML5** (Semantic structure)
-
-*Note: Built completely without external libraries like React Router, Tailwind, or component UI kits to keep the application lightweight and dependency-free.*
-
-## Design approach
-The visual design is inspired by index cards, notebooks, and traditional libraries. It uses:
-- A warm, paper-like color palette (off-whites, charcoal, dusty blue, deep forest).
-- Clean, highly readable typography pairing a serif font for headings (`Lora`) and a sans-serif for body text (`Source Sans 3`).
-- Subtle borders and shadows to create depth without relying on heavy gradients or modern "glass" effects.
-- A fully responsive layout that works seamlessly on mobile, tablet, and desktop.
-
-## API usage
-PageNotes relies exclusively on the free APIs provided by Open Library:
-1. **Search API (`/search.json`)**: Used to find works related to the user's topic query.
-2. **Works API (`/works/{id}.json`)**: Used to fetch full descriptions and detailed metadata for a specific book.
-3. **Subjects API (`/subjects/{subject}.json`)**: Used to find related books that share the same subject category.
-4. **Covers API (`covers.openlibrary.org`)**: Used to fetch cover images in various sizes.
-
-## Edge cases handled
-- **Missing Data:** Books missing covers use a clean SVG placeholder. Missing descriptions, authors, or publish years are gracefully handled with fallback text.
-- **Classification:** If a book lacks clear beginner or advanced keywords in its title or subjects, it is safely defaulted to the "Intermediate" level.
-- **Storage Limits:** Local storage operations are wrapped in `try/catch` blocks to prevent crashes if the browser's storage quota is exceeded or unavailable.
-- **Network Issues:** API calls include a 10-second abort timeout and robust error catching to display user-friendly error states with retry options.
-- **Long Text:** Extremely long book titles or subject tags are safely truncated.
-
-## What I would improve with more time
-- Implement pagination for the topic search results to load more than the initial 20 books.
-- Add user authentication to sync the Reading Journey across multiple devices (currently limited to local browser storage).
-- Enhance the level classification with a more robust natural language processing approach instead of simple keyword heuristics.
-- Add the ability to create custom, user-defined lists beyond the standard "To Read", "Reading", and "Completed" statuses.
+PageNotes is a reading planner for students and self learners who want to study a topic through books in a clear order.
 
 ## Links
-- **Local Dev:** Run `npm run dev` to start the local development server at `http://localhost:5173/`.
-- **Repository:** https://github.com/Satyam087/BookCompanion.git
+- Live App: [https://pagenotes.netlify.app/](https://pagenotes.netlify.app/)
+- Repository: [https://github.com/Satyam087/BookCompanion.git](https://github.com/Satyam087/BookCompanion.git)
+
+## What it is
+PageNotes takes a topic like "Machine Learning", "Philosophy", or "World History" and turns it into a structured reading path. Instead of showing one long list of search results, it organizes books into Beginner, Intermediate, and Advanced sections so the user can understand where to start and how to progress.
+
+## Who it is for
+This project is for students, self learners, and curious readers who want guidance instead of just search results.
+
+## The problem it solves
+Most book discovery tools help users find books, but they do not help them build a learning path. A beginner and an advanced book often appear side by side with no explanation. PageNotes solves this by turning a broad topic into a more understandable sequence and giving the user a simple way to save books and track reading progress.
+
+## Main features
+- Topic search using Open Library data
+- Automatic grouping into Beginner, Intermediate, and Advanced levels
+- Best place to start recommendation on the results page
+- Expandable level sections so the page does not overwhelm the user at once
+- Book details page with description, subjects, and related books
+- Reading Journey page with saved books, notes, and status tracking
+- Recent searches saved in local storage
+- Responsive layout for desktop, tablet, and mobile
+
+## Product decisions
+I wanted this to feel like a real product instead of a raw API demo, so a few decisions shaped the app:
+
+- I used structured reading levels to make the search results more useful for self learners.
+- I limited how many books appear at first in each section so the user is not forced to scroll through a very long page immediately.
+- I used local storage for saved books, notes, reading status, and recent searches so the app still feels personal without needing a backend.
+- I kept routing lightweight with a small hash based router because the assignment only required a frontend application and I wanted to keep the code simple and dependency free.
+
+## Tech stack
+- React 19
+- Vite
+- JavaScript ES6+
+- HTML5
+- CSS3
+
+This project was built without external UI libraries, React Router, Tailwind, or component kits.
+
+## Design approach
+The visual direction is inspired by notebooks, index cards, library catalogs, and study desks.
+
+Key design choices:
+- warm paper background
+- editorial typography with serif headings and clean body text
+- subtle borders and soft shadows instead of glossy effects
+- calm earthy accents to keep the interface quiet and readable
+- decorative details used lightly so the product still feels focused
+
+## API usage
+PageNotes uses the free Open Library APIs.
+
+1. Search API `(/search.json)`
+Used to fetch books for the main topic results page.
+
+2. Works API `(/works/{id}.json)`
+Used to fetch a single book's detailed description and subjects.
+
+3. Subjects API `(/subjects/{subject}.json)`
+Used to find related books from a selected subject.
+
+4. Covers API `(covers.openlibrary.org)`
+Used to display book cover images.
+
+In practice, the app combines these endpoints so the user can search by topic, open a book, and continue exploring through related subjects.
+
+## Edge cases handled
+- Missing covers use a fallback placeholder
+- Missing descriptions show a graceful fallback message
+- Missing author names or publish years are handled safely
+- Weak metadata defaults to Intermediate instead of forcing a wrong level
+- Empty search results show a clear message and next step
+- Failed or slow API requests show retry-friendly error states
+- Saved books and notes are protected with safe local storage helpers
+
+## Project structure
+- `src/pages` contains the main screens
+- `src/components` contains reusable UI pieces
+- `src/utils/api.js` handles Open Library requests
+- `src/utils/levelClassifier.js` handles book classification
+- `src/utils/storage.js` handles saved books, notes, and recent searches
+
+## Running locally
+```bash
+npm install
+npm run dev
+```
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+## What I would improve with more time
+- Replace the current heuristic classification with a stronger metadata based ranking system
+- Improve book detail navigation and deep linking even further
+- Add smarter topic suggestions and subject exploration
+- Add sync across devices with authentication and persistent storage
+- Add a richer compare or reading-plan view for saved books
+
+## Video walkthrough
+Add your walkthrough link here once uploaded.
