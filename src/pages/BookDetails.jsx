@@ -151,7 +151,6 @@ export default function BookDetails({ workId }) {
           <div className="book-details__info-col" style={{ position: 'relative' }}>
             <LeafOrnament 
               size="medium" 
-              opacity={0.05} 
               rotation={45} 
               style={{ position: 'absolute', top: 50, right: 0 }} 
             />

@@ -4,7 +4,7 @@ import './LeafOrnament.css';
 export default function LeafOrnament({ 
   className = '', 
   size = 'medium', 
-  opacity = 0.5, 
+  opacity = 0.85, 
   rotation = 0 
 }) {
   

@@ -7,7 +7,6 @@ export default function Footer() {
       <div className="footer__inner container" style={{ position: 'relative' }}>
         <LeafOrnament 
           size="tiny" 
-          opacity={0.06} 
           rotation={-15} 
           style={{ position: 'absolute', top: -10, left: 10 }} 
         />

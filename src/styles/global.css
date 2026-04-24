@@ -20,13 +20,11 @@
   --bg-paper: #FFFFFF;
   --bg-section: #F0EAE0;
   --bg-hover: #EBE4D8;
-  --bg-ruled: repeating-linear-gradient(
-    to bottom,
-    transparent,
-    transparent 27px,
-    #E8E0D5 27px,
-    #E8E0D5 28px
-  );
+  --bg-ruled: repeating-linear-gradient(to bottom,
+      transparent,
+      transparent 27px,
+      #E8E0D5 27px,
+      #E8E0D5 28px);
 
   /* Text */
   --text-primary: #2C2C2C;
@@ -98,7 +96,10 @@ body {
 }
 
 /* --- Typography --- */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-serif);
   font-weight: 600;
   line-height: 1.25;
@@ -145,7 +146,8 @@ img {
   max-width: 100%;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -157,7 +159,9 @@ button {
   font-size: 0.875rem;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   font-family: var(--font-sans);
   font-size: 0.9375rem;
 }
@@ -178,8 +182,15 @@ input, textarea, select {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* --- Buttons --- */
@@ -339,16 +350,19 @@ input, textarea, select {
 .level-badge--beginner {
   color: var(--accent-forest);
   border: 1px solid var(--accent-forest);
+  border-left: 3px solid var(--accent-forest);
 }
 
 .level-badge--intermediate {
   color: var(--accent-blue);
   border: 1px solid var(--accent-blue);
+  border-left: 3px solid var(--accent-blue);
 }
 
 .level-badge--advanced {
   color: var(--accent-rust);
   border: 1px solid var(--accent-rust);
+  border-left: 3px solid var(--accent-rust);
 }
 
 /* --- Status Badges --- */
@@ -400,20 +414,23 @@ input, textarea, select {
 
 /* --- Loading Skeleton --- */
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--bg-section) 25%,
-    var(--bg-hover) 50%,
-    var(--bg-section) 75%
-  );
+  background: linear-gradient(90deg,
+      var(--bg-section) 25%,
+      var(--bg-hover) 50%,
+      var(--bg-section) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s ease-in-out infinite;
   border-radius: var(--radius-sm);
 }
 
 @keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* --- Textarea --- */
@@ -490,13 +507,7 @@ input, textarea, select {
 /* --- Grid --- */
 .book-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: var(--space-lg);
-}
-
-.loading-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--space-lg);
 }
 
@@ -506,9 +517,17 @@ input, textarea, select {
     --header-height: 56px;
   }
 
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.375rem; }
-  h3 { font-size: 1.1rem; }
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.375rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
 
   .container {
     padding: 0 var(--space-md);
@@ -526,7 +545,9 @@ input, textarea, select {
 }
 
 @media (max-width: 480px) {
-  h1 { font-size: 1.625rem; }
+  h1 {
+    font-size: 1.625rem;
+  }
 
   .container {
     padding: 0 var(--space-sm);

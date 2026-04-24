@@ -50,7 +50,6 @@ export default function ReadingJourney() {
       <div className="container" style={{ position: 'relative' }}>
         <LeafOrnament 
           size="tiny" 
-          opacity={0.15} 
           rotation={-25} 
           style={{ position: 'absolute', top: 10, right: 10 }} 
         />
@@ -131,7 +130,6 @@ export default function ReadingJourney() {
           <div style={{ position: 'relative' }}>
             <LeafOrnament 
               size="small" 
-              opacity={0.08} 
               rotation={35} 
               style={{ position: 'absolute', top: '20%', left: '10%' }} 
             />

@@ -98,7 +98,6 @@ export default function TopicResults({ topic }) {
             <div className="topic-results__summary-panel" style={{ position: 'relative' }}>
               <LeafOrnament 
                 size="tiny" 
-                opacity={0.12} 
                 rotation={15} 
                 style={{ position: 'absolute', top: -10, right: -10 }} 
               />
@@ -135,7 +134,6 @@ export default function TopicResults({ topic }) {
             <div className="topic-results__nav-rail" style={{ position: 'relative' }}>
               <LeafOrnament 
                 size="small" 
-                opacity={0.08} 
                 rotation={-30} 
                 style={{ position: 'absolute', top: -20, left: -40 }} 
               />

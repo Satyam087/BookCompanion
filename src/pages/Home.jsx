@@ -16,7 +16,6 @@ export default function Home() {
         <section className="home__hero">
           <LeafOrnament 
             size="large" 
-            opacity={0.08} 
             rotation={25} 
             className="home__leaf-hero" 
           />
@@ -37,7 +36,6 @@ export default function Home() {
             <div className="home__chips-wrap" style={{ position: 'relative' }}>
               <LeafOrnament 
                 size="small" 
-                opacity={0.15} 
                 rotation={-15} 
                 className="home__leaf-chips" 
               />
@@ -73,7 +71,7 @@ export default function Home() {
         </section>
 
         <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
-          <LeafOrnament size="tiny" opacity={0.12} rotation={90} />
+          <LeafOrnament size="tiny" rotation={90} />
         </div>
 
         {/* Product Steps */}
@@ -109,7 +107,6 @@ export default function Home() {
           <section className="home__recent" id="recent-searches" style={{ position: 'relative' }}>
             <LeafOrnament 
               size="medium" 
-              opacity={0.06} 
               rotation={-45} 
               className="home__leaf-recent" 
             />
