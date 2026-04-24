@@ -3,9 +3,9 @@
   top: 0;
   z-index: 100;
   height: var(--header-height);
-  background-color: var(--bg-paper);
+  background-color: var(--bg-warm);
   border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
 }
 
 .header__inner {
@@ -23,15 +23,26 @@
 }
 
 .header__icon {
-  font-size: 1.5rem;
+  display: flex;
+  color: var(--accent-forest);
 }
 
 .header__title {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.02em;
+}
+
+.header__descriptor {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  border-left: 1px solid var(--border);
+  padding-left: var(--space-sm);
+  margin-left: 2px;
+  letter-spacing: 0.03em;
 }
 
 .header__nav {
@@ -42,21 +53,21 @@
 
 .header__link {
   padding: 8px 16px;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-secondary);
-  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  border-radius: 0;
+  border-bottom: 2px solid transparent;
   transition: all 0.2s ease;
 }
 
 .header__link:hover {
   color: var(--text-primary);
-  background-color: var(--bg-section);
 }
 
 .header__link--active {
   color: var(--accent-forest);
-  background-color: var(--accent-forest-bg);
+  border-bottom-color: var(--accent-forest);
 }
 
 .header__hamburger {
@@ -89,22 +100,28 @@
 }
 
 @media (max-width: 600px) {
+  .header__descriptor {
+    display: none;
+  }
+
   .header__hamburger {
     display: flex;
   }
 
   .header__nav {
     display: none;
-    position: absolute;
+    position: fixed;
     top: var(--header-height);
-    left: 0;
     right: 0;
+    bottom: 0;
+    width: 240px;
     background-color: var(--bg-paper);
-    border-bottom: 1px solid var(--border);
+    border-left: 1px solid var(--border);
     flex-direction: column;
-    padding: var(--space-md);
+    padding: var(--space-lg) var(--space-md);
     gap: var(--space-xs);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
+    z-index: 200;
   }
 
   .header__nav--open {
@@ -115,5 +132,12 @@
     width: 100%;
     text-align: left;
     padding: 12px 16px;
+    border-bottom: none;
+    border-radius: var(--radius-md);
+  }
+
+  .header__link--active {
+    background-color: var(--accent-forest-bg);
+    border-bottom: none;
   }
 }
