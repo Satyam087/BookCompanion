@@ -4,19 +4,16 @@ import './LevelSection.css';
 
 const LEVEL_INFO = {
   beginner: {
-    icon: '🌱',
     label: 'Beginner',
     description: 'Start here. These books cover fundamentals and introductions to the topic.',
     color: 'forest',
   },
   intermediate: {
-    icon: '📚',
     label: 'Intermediate',
     description: 'Build deeper understanding with broader surveys and standard texts.',
     color: 'blue',
   },
   advanced: {
-    icon: '🔬',
     label: 'Advanced',
     description: 'Go deeper with specialized, technical, and research-oriented material.',
     color: 'rust',
@@ -38,7 +35,7 @@ export default function LevelSection({ level, books, onSaveChange }) {
         aria-controls={`level-content-${level}`}
       >
         <div className="level-section__title-row">
-          <span className="level-section__icon" aria-hidden="true">{info.icon}</span>
+          <span className={`level-section__marker level-section__marker--${info.color}`} aria-hidden="true"></span>
           <h2 className="level-section__title">{info.label}</h2>
           <span className="level-section__count">{books.length} {books.length === 1 ? 'book' : 'books'}</span>
         </div>
