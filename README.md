@@ -23,6 +23,7 @@ Most book discovery tools help users find books, but they do not help them build
 - Book details page with description, subjects, and related books
 - Reading Journey page with saved books, notes, and status tracking
 - Recent searches saved in local storage
+- Basic analytics through Google Analytics to understand how users interact with search and reading paths
 - Responsive layout for desktop, tablet, and mobile
 
 ## Product decisions
@@ -32,6 +33,7 @@ I wanted this to feel like a real product instead of a raw API demo, so a few de
 - I limited how many books appear at first in each section so the user is not forced to scroll through a very long page immediately.
 - I used local storage for saved books, notes, reading status, and recent searches so the app still feels personal without needing a backend.
 - I kept routing lightweight with a small hash based router because the assignment only required a frontend application and I wanted to keep the code simple and dependency free.
+- I added basic analytics so I can understand how users move through search, path exploration, and saved reading behavior.
 
 ## Tech stack
 - React 19
