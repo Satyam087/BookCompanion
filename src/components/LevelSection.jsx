@@ -52,7 +52,6 @@ export default function LevelSection({ level, books, onSaveChange }) {
   return (
     <section
       className={`level-section level-section--${level}`}
-      id={`level-${level}`}
       ref={sectionRef}
     >
       <button

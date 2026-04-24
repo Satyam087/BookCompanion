@@ -42,6 +42,7 @@ export default function BookDetails({ workId }) {
 
         details.level = classifyBook(details);
         setBook(details);
+        setLoading(false);
 
         const isSaved = isBookSaved(details.id);
         setSaved(isSaved);
@@ -49,22 +50,21 @@ export default function BookDetails({ workId }) {
           setStatus(savedVersion.status || 'to-read');
         }
 
-        // Fetch related books from the first subject
+        // Fetch related books independently so failures don't affect the main page
         if (details.subjects && details.subjects.length > 0) {
           const topSubject = details.subjects[0];
-          return getRelatedBooks(topSubject, 6);
+          getRelatedBooks(topSubject, 6)
+            .then((relatedBooks) => {
+              const filtered = relatedBooks.filter(b => b.id !== fullWorkId);
+              setRelated(filtered.slice(0, 5));
+            })
+            .catch(() => {
+              // Fail silently — related books are optional
+            });
         }
-        return [];
-      })
-      .then((relatedBooks) => {
-        // Filter out the current book
-        const filtered = relatedBooks.filter(b => b.id !== fullWorkId);
-        setRelated(filtered.slice(0, 5));
       })
       .catch((err) => {
         setError(err.message || 'Failed to load book details.');
-      })
-      .finally(() => {
         setLoading(false);
       });
   }, [fullWorkId]);

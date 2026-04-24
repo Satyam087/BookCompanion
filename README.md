@@ -52,7 +52,7 @@ PageNotes relies exclusively on the free APIs provided by Open Library:
 - **Long Text:** Extremely long book titles or subject tags are safely truncated.
 
 ## What I would improve with more time
-- Implement pagination for the topic search results to load more than the initial 40 books.
+- Implement pagination for the topic search results to load more than the initial 20 books.
 - Add user authentication to sync the Reading Journey across multiple devices (currently limited to local browser storage).
 - Enhance the level classification with a more robust natural language processing approach instead of simple keyword heuristics.
 - Add the ability to create custom, user-defined lists beyond the standard "To Read", "Reading", and "Completed" statuses.

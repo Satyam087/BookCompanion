@@ -28,6 +28,7 @@ export default function ReadingJourney() {
 
   const handleNotesChange = (bookId, notes) => {
     updateBookNotes(bookId, notes);
+    setBooks(getSavedBooks());
   };
 
   const filtered = activeTab === 'all'

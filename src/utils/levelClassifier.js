@@ -50,8 +50,8 @@ export function groupBooksByLevel(books) {
   const groups = { beginner: [], intermediate: [], advanced: [] };
   books.forEach(book => {
     const level = classifyBook(book);
-    book.level = level;
-    groups[level].push(book);
+    const classified = { ...book, level };
+    groups[level].push(classified);
   });
   return groups;
 }
