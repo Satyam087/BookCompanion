@@ -2,22 +2,23 @@
   padding: var(--space-lg);
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
+  border-top: 3px solid var(--border-dark);
   scroll-margin-top: var(--space-3xl);
 }
 
 .level-section--beginner {
   background-color: #f2f9f5;
-  border-left: 4px solid var(--accent-forest);
+  border-top-color: var(--accent-forest);
 }
 
 .level-section--intermediate {
   background-color: #f0f4fa;
-  border-left: 4px solid var(--accent-blue);
+  border-top-color: var(--accent-blue);
 }
 
 .level-section--advanced {
   background-color: #fdf5f2;
-  border-left: 4px solid var(--accent-rust);
+  border-top-color: var(--accent-rust);
 }
 
 .level-section__header {
