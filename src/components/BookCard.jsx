@@ -81,6 +81,17 @@ export default function BookCard({ book, onSaveChange }) {
         <p className="book-card__author">{formatAuthors(book.authors)}</p>
         <p className="book-card__year">{formatYear(book.publishYear)}</p>
 
+        <a 
+          href={book.infoUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="btn-text btn-sm"
+          onClick={(e) => e.stopPropagation()}
+          style={{ marginTop: 'auto', paddingTop: '8px', display: 'inline-block' }}
+        >
+          Read External →
+        </a>
+
         {book.subjects && book.subjects.length > 0 && (
           <div className="book-card__tags">
             {book.subjects.slice(0, 3).map((s, i) => (

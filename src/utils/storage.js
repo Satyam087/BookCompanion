@@ -51,6 +51,7 @@ export function saveBook(book) {
     level: book.level || 'intermediate',
     status: 'to-read',
     notes: '',
+    infoUrl: book.infoUrl,
     savedAt: Date.now(),
   };
 

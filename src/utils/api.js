@@ -57,6 +57,7 @@ function normalizeSearchBook(doc) {
       : [],
     description: null,
     editionCount: doc.edition_count || 0,
+    infoUrl: `https://openlibrary.org${doc.key || ''}`,
   };
 }
 
@@ -78,6 +79,7 @@ function normalizeSubjectBook(work) {
       : [],
     description: null,
     editionCount: work.edition_count || 0,
+    infoUrl: `https://openlibrary.org${work.key || ''}`,
   };
 }
 
@@ -153,6 +155,7 @@ export async function getBookDetails(workId) {
     authors: authors.length > 0 ? authors : [],
     publishYear: publishYear,
     editionCount: editionCount,
+    infoUrl: `https://openlibrary.org${worksData.key || cleanId}`,
   };
 }
 

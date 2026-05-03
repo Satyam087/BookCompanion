@@ -253,6 +253,18 @@ function JourneyCard({ book, onStatusChange, onRemove, onNotesChange, isNotesExp
           </button>
         </div>
 
+        <div style={{ marginTop: '12px' }}>
+          <a 
+            href={book.infoUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="btn-text btn-sm"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+          >
+            Read on Open Library →
+          </a>
+        </div>
+
         {isNotesExpanded && (
           <div className="journey-card__notes-wrap">
             <div className="journey-card__notebook-rings"></div>

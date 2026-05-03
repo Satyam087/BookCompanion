@@ -228,6 +228,16 @@ export default function BookDetails({ workId }) {
                 {saved ? 'Remove from journey' : 'Save to journey'}
               </button>
 
+              <a 
+                href={book.infoUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn btn-secondary"
+                id="read-book-link"
+              >
+                Read on Open Library
+              </a>
+
               {saved && (
                 <select
                   className="select"
