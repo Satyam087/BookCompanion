@@ -229,11 +229,16 @@
 }
 
 .journey-card__actions {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
+  display: flex;
+  align-items: center;
   gap: var(--space-sm);
   margin-top: auto;
-  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.journey-card__status-select {
+  flex: 1;
+  min-width: 0; /* Allow select to shrink if needed */
 }
 
 .journey-card__remove-btn {
@@ -314,7 +319,7 @@
   }
 
   .journey-card__actions {
-    grid-template-columns: 1fr auto;
+    flex-wrap: wrap;
     gap: var(--space-xs);
   }
 
