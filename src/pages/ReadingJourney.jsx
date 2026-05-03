@@ -225,6 +225,16 @@ function JourneyCard({ book, onStatusChange, onRemove, onNotesChange, isNotesExp
         )}
 
         <div className="journey-card__actions">
+          <a 
+            href={book.infoUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="btn btn-sm btn-primary"
+            style={{ textDecoration: 'none' }}
+          >
+            Read
+          </a>
+
           <select
             className="select journey-card__status-select"
             value={book.status}
@@ -240,7 +250,7 @@ function JourneyCard({ book, onStatusChange, onRemove, onNotesChange, isNotesExp
             className={`btn btn-sm btn-ghost journey-card__notes-btn ${isNotesExpanded || notes ? 'has-notes' : ''}`}
             onClick={onToggleNotes}
           >
-            {isNotesExpanded ? 'Close' : (notes ? 'Edit notes' : 'Add notes')}
+            {isNotesExpanded ? 'Close' : (notes ? 'Edit' : 'Notes')}
           </button>
 
           <button
@@ -251,18 +261,6 @@ function JourneyCard({ book, onStatusChange, onRemove, onNotesChange, isNotesExp
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
           </button>
-        </div>
-
-        <div style={{ marginTop: '12px' }}>
-          <a 
-            href={book.infoUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="btn-text btn-sm"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}
-          >
-            Read on Open Library →
-          </a>
         </div>
 
         {isNotesExpanded && (

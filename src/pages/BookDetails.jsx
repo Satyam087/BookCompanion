@@ -220,23 +220,23 @@ export default function BookDetails({ workId }) {
             )}
 
             <div className="book-details__actions">
+              <a 
+                href={book.infoUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn btn-primary"
+                id="read-book-link"
+              >
+                Read on Open Library
+              </a>
+
               <button
-                className={`btn ${saved ? 'btn-danger' : 'btn-primary'}`}
+                className={`btn ${saved ? 'btn-danger' : 'btn-secondary'}`}
                 onClick={handleSave}
                 id="save-book-btn"
               >
                 {saved ? 'Remove from journey' : 'Save to journey'}
               </button>
-
-              <a 
-                href={book.infoUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-secondary"
-                id="read-book-link"
-              >
-                Read on Open Library
-              </a>
 
               {saved && (
                 <select
