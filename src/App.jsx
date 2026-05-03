@@ -41,7 +41,13 @@ export default function App() {
 
   useEffect(() => {
     const handleHashChange = () => {
-      setCurrentPath(parseHash());
+      const nextPath = parseHash();
+      setCurrentPath(prevPath => {
+        if (prevPath !== nextPath) {
+          sessionStorage.setItem('pagenotes_prev_route', prevPath);
+        }
+        return nextPath;
+      });
     };
 
     window.addEventListener('hashchange', handleHashChange);

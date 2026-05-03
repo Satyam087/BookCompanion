@@ -1,6 +1,6 @@
 import { truncateText, formatAuthors, formatYear, getPlaceholderCover, navigate, getWorkIdFromKey } from '../utils/helpers';
 import { isBookSaved, saveBook, removeBook } from '../utils/storage';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './BookCard.css';
 
 const LEVEL_LABELS = {
@@ -12,6 +12,17 @@ const LEVEL_LABELS = {
 export default function BookCard({ book, onSaveChange }) {
   const [saved, setSaved] = useState(isBookSaved(book.id));
   const [imgError, setImgError] = useState(false);
+
+  useEffect(() => {
+    const syncSaved = () => setSaved(isBookSaved(book.id));
+    
+    // Sync on mount and ID change
+    syncSaved();
+
+    // Listen for updates from other components
+    window.addEventListener('bookmark-updated', syncSaved);
+    return () => window.removeEventListener('bookmark-updated', syncSaved);
+  }, [book.id]);
 
   const coverSrc = (!imgError && book.coverUrl) ? book.coverUrl : getPlaceholderCover();
   const workId = getWorkIdFromKey(book.id);

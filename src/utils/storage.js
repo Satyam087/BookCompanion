@@ -56,6 +56,7 @@ export function saveBook(book) {
 
   const updated = [bookToSave, ...books];
   safeSetItem(KEYS.SAVED_BOOKS, updated);
+  window.dispatchEvent(new CustomEvent('bookmark-updated'));
   return updated;
 }
 
@@ -63,6 +64,7 @@ export function removeBook(bookId) {
   const books = getSavedBooks();
   const updated = books.filter(b => b.id !== bookId);
   safeSetItem(KEYS.SAVED_BOOKS, updated);
+  window.dispatchEvent(new CustomEvent('bookmark-updated'));
   return updated;
 }
 
@@ -77,6 +79,7 @@ export function updateBookStatus(bookId, status) {
     b.id === bookId ? { ...b, status } : b
   );
   safeSetItem(KEYS.SAVED_BOOKS, updated);
+  window.dispatchEvent(new CustomEvent('bookmark-updated'));
   return updated;
 }
 

@@ -47,6 +47,10 @@ export function navigate(path) {
   window.location.hash = path;
 }
 
+export function getPreviousInternalRoute() {
+  return sessionStorage.getItem('pagenotes_prev_route');
+}
+
 export function cleanTopic(topic) {
   return topic.trim().toLowerCase().replace(/\s+/g, '+');
 }

@@ -135,10 +135,12 @@ export async function getBookDetails(workId) {
   let editionCount = null;
 
   if (searchData && searchData.docs && searchData.docs.length > 0) {
-    const doc = searchData.docs[0];
-    authors = doc.author_name && doc.author_name.length > 0 ? doc.author_name : [];
-    publishYear = doc.first_publish_year || null;
-    editionCount = doc.edition_count || null;
+    const doc = searchData.docs.find(d => d.key === cleanId);
+    if (doc) {
+      authors = doc.author_name && doc.author_name.length > 0 ? doc.author_name : [];
+      publishYear = doc.first_publish_year || null;
+      editionCount = doc.edition_count || null;
+    }
   }
 
   return {

@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { getBookDetails, getRelatedBooks } from '../utils/api';
 import { classifyBook } from '../utils/levelClassifier';
 import { isBookSaved, saveBook, removeBook, updateBookStatus, getSavedBooks } from '../utils/storage';
-import { formatAuthors, formatYear, getPlaceholderCover, navigate } from '../utils/helpers';
+import { formatAuthors, formatYear, getPlaceholderCover, navigate, getPreviousInternalRoute } from '../utils/helpers';
 import BookGrid from '../components/BookGrid';
 import ErrorState from '../components/ErrorState';
 import LeafOrnament from '../components/LeafOrnament';
@@ -78,6 +78,21 @@ export default function BookDetails({ workId }) {
     window.scrollTo(0, 0);
   }, [fetchDetails]);
 
+  useEffect(() => {
+    const syncSaved = () => setSaved(isBookSaved(book?.id || fullWorkId));
+    window.addEventListener('bookmark-updated', syncSaved);
+    return () => window.removeEventListener('bookmark-updated', syncSaved);
+  }, [book?.id, fullWorkId]);
+
+  const handleBack = () => {
+    const prev = getPreviousInternalRoute();
+    if (prev) {
+      navigate(prev);
+    } else {
+      navigate('/');
+    }
+  };
+
   const handleSave = () => {
     if (saved) {
       removeBook(book.id);
@@ -116,7 +131,7 @@ export default function BookDetails({ workId }) {
     return (
       <div className="page" id="book-details-page">
         <div className="container">
-          <button className="btn btn-ghost" onClick={() => window.history.length > 2 ? window.history.back() : navigate('/')}>
+          <button className="btn btn-ghost" onClick={handleBack}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
             Back
           </button>
@@ -133,7 +148,7 @@ export default function BookDetails({ workId }) {
   return (
     <div className="page book-details" id="book-details-page">
       <div className="container">
-        <button className="btn btn-ghost" onClick={() => window.history.length > 2 ? window.history.back() : navigate('/')}>
+        <button className="btn btn-ghost" onClick={handleBack}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
           Back
         </button>
