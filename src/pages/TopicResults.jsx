@@ -55,9 +55,9 @@ export default function TopicResults({ topic }) {
     const b = grouped.beginner.length;
     const i = grouped.intermediate.length;
     const a = grouped.advanced.length;
-    if (b > i && b > a) return 'Strong beginner coverage — great for getting started.';
-    if (a > b && a > i) return 'Leans toward advanced material — prior knowledge may help.';
-    if (b === 0 && a > 0) return 'No beginner titles found — consider starting with intermediate.';
+    if (b > i && b > a) return 'Strong beginner coverage - great for getting started.';
+    if (a > b && a > i) return 'Leans toward advanced material - prior knowledge may help.';
+    if (b === 0 && a > 0) return 'No beginner titles found - consider starting with intermediate.';
     return 'A balanced path across difficulty levels.';
   };
 

@@ -9,9 +9,9 @@ import LeafOrnament from '../components/LeafOrnament';
 import './BookDetails.css';
 
 const LEVEL_REASONS = {
-  beginner: 'This book is classified as Beginner because its title or subjects suggest introductory, foundational content suitable for those new to the topic.',
-  intermediate: 'This book is classified as Intermediate. It covers the topic at a general level without strong beginner or advanced signals in its metadata.',
-  advanced: 'This book is classified as Advanced because its title or subjects suggest specialized, research-oriented, or deeply technical content.',
+  beginner: 'Classified as Beginner because the title and subjects suggest introductory content for those new to the topic.',
+  intermediate: 'Classified as Intermediate. It covers the topic at a general level without strong beginner or advanced signals.',
+  advanced: 'Classified as Advanced. The metadata suggests specialized, research-oriented, or technical content.',
 };
 
 export default function BookDetails({ workId }) {
@@ -60,7 +60,7 @@ export default function BookDetails({ workId }) {
               setRelated(filtered.slice(0, 5));
             })
             .catch(() => {
-              // Fail silently — related books are optional
+              // Related books are optional, so fail silently
             });
         }
       })
